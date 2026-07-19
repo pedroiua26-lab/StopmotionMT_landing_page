@@ -749,6 +749,78 @@ body.mode-foto .th-foto { color:var(--yellow); }
   .nav-logo-img { width: 26px; height: 26px; }
 }
 
+
+/* ═══════════════════════════════════════════════════════════
+   OTIMIZAÇÃO MOBILE — não afeta desktop (só ≤600px)
+   ═══════════════════════════════════════════════════════════ */
+@media (max-width: 600px) {
+
+  /* Reduz o padding vertical gigante das seções */
+  section { padding: 3.2rem 1.25rem; }
+
+  /* Hero: menos padding, logo controlado */
+  .hero { padding: 6rem 1.25rem 3rem; gap: 2rem; }
+  .hero-logo-big { width: min(240px, 62vw); height: min(240px, 62vw); }
+  .hero-title { font-size: clamp(2.4rem, 12vw, 3.5rem); }
+
+  /* Intro: logo menor, sem espaço vazio */
+  .intro-section { gap: 1.8rem; }
+  .intro-logo { max-width: 150px; }
+
+  /* Sobre o criador: logo menor */
+  .about-inner { gap: 1.8rem; }
+  .about-logo { width: 120px; height: 120px; }
+
+  /* Títulos de seção não estouram */
+  .section-title { font-size: clamp(1.7rem, 8vw, 2.4rem); word-wrap: break-word; }
+
+  /* CTA final: menos respiro exagerado */
+  .cta-section { padding: 4rem 1.25rem 3.5rem; }
+
+  /* Estatísticas: empilha em vez de espremer 3 colunas */
+  .stats-bar { grid-template-columns: 1fr; }
+  .stat-num { font-size: 2.2rem; }
+
+  /* Cards de export não estouram */
+  .export-inner { gap: 1.8rem; }
+
+  /* Fluxo de trabalho: numeração menor */
+  .workflow-step { grid-template-columns: 44px 1fr; gap: 1rem; padding: 1.5rem 0; }
+  .step-num { font-size: 2rem; }
+
+  /* Teclado: garante que caiba e centralize */
+  .numpad-wrap { gap: 2rem; }
+  .numpad-grid { grid-template-columns: repeat(4, 62px); gap: 5px; }
+  .nk { width: 62px; height: 62px; padding: 5px 4px 6px; }
+  .nk-enter { height: calc(62px*2 + 5px) !important; }
+  .nk-wide { width: calc(62px*2 + 5px) !important; }
+  .nk-num { font-size: .6rem; }
+  .nk-icon-box svg { width: 22px; height: 22px; }
+
+  /* Tabela de atalhos: fonte menor para caber */
+  .kbd-ref-table { font-size: .74rem; }
+  .kbd-ref-table th, .kbd-ref-table td { padding: .4rem .5rem; }
+
+  /* Filmstrip menor */
+  .filmstrip-frame { width: 48px; height: 34px; }
+
+  /* Blockquotes não estouram */
+  blockquote, .intro-text blockquote, .about-inner blockquote { font-size: 1.15rem; }
+
+  /* Screenshots caption legível */
+  .screenshot-caption { padding: .8rem 1rem; }
+}
+
+/* Telas muito estreitas: teclado ainda menor */
+@media (max-width: 380px) {
+  .numpad-grid { grid-template-columns: repeat(4, 54px); gap: 4px; }
+  .nk { width: 54px; height: 54px; }
+  .nk-enter { height: calc(54px*2 + 4px) !important; }
+  .nk-wide { width: calc(54px*2 + 4px) !important; }
+  .nk-icon-box svg { width: 19px; height: 19px; }
+  .hero-logo-big { width: 55vw; height: 55vw; }
+}
+
 </style>
 </head>
 <body>
@@ -763,8 +835,8 @@ body.mode-foto .th-foto { color:var(--yellow); }
     </div>
   </div>
   <div class="nav-actions">
-    <a href="https://play.google.com/store" class="nav-cta">↓ <span class="nav-cta-full">Baixar grátis para Android</span><span class="nav-cta-short">Android</span></a>
-    <a href="https://apps.apple.com" class="nav-cta">↓ <span class="nav-cta-full">Baixar grátis para IOS</span><span class="nav-cta-short">iOS</span></a>
+    <a href="https://play.google.com/store" class="nav-cta" target="_blank" rel="noopener noreferrer">↓ <span class="nav-cta-full">Baixar grátis para Android</span><span class="nav-cta-short">Android</span></a>
+    <a href="https://apps.apple.com" class="nav-cta" target="_blank" rel="noopener noreferrer">↓ <span class="nav-cta-full">Baixar grátis para IOS</span><span class="nav-cta-short">iOS</span></a>
   </div>
 </nav>
 
@@ -781,8 +853,8 @@ body.mode-foto .th-foto { color:var(--yellow); }
       StopMotion MT — Mágicas e Truques. Capture frame a frame com controle total de câmera, edite na timeline e exporte as cenas para vídeo MP4 ou sequência de imagens JPG. Feito por animador, para animadores.
     </p>
     <div class="hero-actions">
-      <a href="https://play.google.com/store" class="btn-primary">▶ Baixar na Play Store</a>
-      <a href="https://apps.apple.com" class="btn-primary">▶ Baixar na Apple Store</a>
+      <a href="https://play.google.com/store" class="btn-primary" target="_blank" rel="noopener noreferrer">▶ Baixar na Play Store</a>
+      <a href="https://apps.apple.com" class="btn-primary" target="_blank" rel="noopener noreferrer">▶ Baixar na Apple Store</a>
     </div>
     <div class="hero-actions" style="margin-top:.9rem;animation-delay:.75s">
       <a href="#funcionalidades" class="btn-secondary">Ver funcionalidades →</a>
@@ -1194,8 +1266,8 @@ body.mode-foto .th-foto { color:var(--yellow); }
       Baixe Stop Motion MT e descubra o que é capturar stop motion com controle de câmera real, conexão com teclado externo e timeline profissional.
     </p>
     <div style="display:flex;gap:.9rem;justify-content:center;flex-wrap:wrap">
-      <a href="https://play.google.com/store" class="btn-primary" style="font-size:.95rem;padding:1.1rem 2.8rem">▶ Baixar na Play Store</a>
-      <a href="https://apps.apple.com" class="btn-primary" style="font-size:.95rem;padding:1.1rem 2.8rem">▶ Baixar na Apple Store</a>
+      <a href="https://play.google.com/store" class="btn-primary" style="font-size:.95rem;padding:1.1rem 2.8rem" target="_blank" rel="noopener noreferrer">▶ Baixar na Play Store</a>
+      <a href="https://apps.apple.com" class="btn-primary" style="font-size:.95rem;padding:1.1rem 2.8rem" target="_blank" rel="noopener noreferrer">▶ Baixar na Apple Store</a>
     </div>
   </div>
   <div class="cta-line"></div>
