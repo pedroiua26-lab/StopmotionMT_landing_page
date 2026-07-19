@@ -706,6 +706,47 @@ footer {
 .td-anim { color:#ccc; } .td-foto { color:#666; }
 body.mode-foto .td-anim { color:#555; } body.mode-foto .td-foto { color:#ccc; }
 
+
+/* ── NAV: default (desktop) ── */
+.nav-actions { display:flex; gap:.6rem; flex-wrap:wrap; }
+.nav-cta-full { display:inline; }
+.nav-cta-short { display:none; }
+
+/* ── NAV: mobile (≤640px) ── */
+@media (max-width: 640px) {
+  nav {
+    padding: .6rem .9rem;
+    gap: .5rem;
+  }
+  .nav-brand { gap: .55rem; }
+  .nav-logo-img { width: 30px; height: 30px; }
+  .nav-name {
+    font-size: .62rem;
+    letter-spacing: .08em;
+    line-height: 1.25;
+    white-space: nowrap;
+  }
+  .nav-name span { font-size: .52rem; }
+  .nav-actions { gap: .4rem; flex-wrap: nowrap; }
+  .nav-cta {
+    padding: .5rem .7rem;
+    font-size: .64rem;
+    letter-spacing: .04em;
+    white-space: nowrap;
+    line-height: 1;
+  }
+  .nav-cta-full { display: none; }
+  .nav-cta-short { display: inline; }
+}
+
+/* ── NAV: telas muito estreitas (≤400px) ── */
+@media (max-width: 400px) {
+  .nav-name { font-size: .56rem; }
+  .nav-name span { display: none; }
+  .nav-cta { padding: .45rem .6rem; font-size: .6rem; }
+  .nav-logo-img { width: 26px; height: 26px; }
+}
+
 </style>
 </head>
 <body>
@@ -719,9 +760,9 @@ body.mode-foto .td-anim { color:#555; } body.mode-foto .td-foto { color:#ccc; }
       <span>Mágicas e Truques</span>
     </div>
   </div>
-  <div style="display:flex;gap:.6rem;flex-wrap:wrap">
-    <a href="https://play.google.com/store" class="nav-cta">↓ Baixar grátis para Android</a>
-    <a href="https://apps.apple.com" class="nav-cta">↓ Baixar grátis para IOS</a>
+  <div class="nav-actions">
+    <a href="https://play.google.com/store" class="nav-cta">↓ <span class="nav-cta-full">Baixar grátis para Android</span><span class="nav-cta-short">Android</span></a>
+    <a href="https://apps.apple.com" class="nav-cta">↓ <span class="nav-cta-full">Baixar grátis para IOS</span><span class="nav-cta-short">iOS</span></a>
   </div>
 </nav>
 
@@ -1197,8 +1238,8 @@ body.mode-foto .td-anim { color:#555; } body.mode-foto .td-foto { color:#ccc; }
     document.body.classList.toggle('mode-foto', !isAnim);
     document.getElementById('btn-anim').className = isAnim ? 'kt-active' : 'kt-inactive';
     document.getElementById('btn-foto').className = isAnim ? 'kt-inactive' : 'kt-active';
-    document.querySelectorAll('.nk-icon-anim').forEach(el => el.style.display = isAnim ? '' : 'none');
-    document.querySelectorAll('.nk-icon-foto').forEach(el => el.style.display = isAnim ? 'none' : '');
+    document.querySelectorAll('.nk-icon-anim').forEach(el => el.style.display = isAnim ? 'block' : 'none');
+    document.querySelectorAll('.nk-icon-foto').forEach(el => el.style.display = isAnim ? 'none' : 'block');
     document.querySelectorAll('.nk[data-anim]').forEach(el => {
       el.title = isAnim ? el.dataset.anim : el.dataset.foto;
     });
