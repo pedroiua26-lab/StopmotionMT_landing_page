@@ -14,6 +14,7 @@
   --surface: #111111;
   --yellow: #f5d800;
   --yellow-dim: #c9b000;
+  --orange: #ff7a1a;
   --white: #f0ede8;
   --muted: #555;
   --border: #1e1e1e;
@@ -97,6 +98,28 @@ nav {
   transition: opacity .2s;
 }
 .nav-cta:hover { opacity: .85; }
+
+.lang-switch {
+  display: flex;
+  gap: .3rem;
+  margin-left: .6rem;
+  padding-left: .6rem;
+  border-left: 1px solid var(--border);
+}
+.lang-btn {
+  font-family: 'DM Mono', monospace;
+  font-size: .6rem;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  padding: .32rem .48rem;
+  background: transparent;
+  color: #666;
+  border: 1px solid #2a2a2a;
+  cursor: pointer;
+  transition: color .2s, border-color .2s, background .2s;
+}
+.lang-btn:hover { color: var(--orange); border-color: var(--orange); }
+.lang-btn.active { color: #000; background: var(--orange); border-color: var(--orange); font-weight: 500; }
 
 /* HERO */
 .hero {
@@ -729,7 +752,7 @@ body.mode-foto .th-foto { color:var(--yellow); }
     white-space: nowrap;
   }
   .nav-name span { font-size: .52rem; }
-  .nav-actions { gap: .4rem; flex-wrap: nowrap; }
+  .nav-actions { gap: .4rem; flex-wrap: wrap; justify-content: flex-end; }
   .nav-cta {
     padding: .5rem .7rem;
     font-size: .64rem;
@@ -739,6 +762,8 @@ body.mode-foto .th-foto { color:var(--yellow); }
   }
   .nav-cta-full { display: none; }
   .nav-cta-short { display: inline; }
+  .lang-switch { margin-left: .3rem; padding-left: .4rem; }
+  .lang-btn { padding: .32rem .38rem; font-size: .54rem; }
 }
 
 /* ── NAV: telas muito estreitas (≤400px) ── */
@@ -747,6 +772,8 @@ body.mode-foto .th-foto { color:var(--yellow); }
   .nav-name span { display: none; }
   .nav-cta { padding: .45rem .6rem; font-size: .6rem; }
   .nav-logo-img { width: 26px; height: 26px; }
+  .lang-switch { gap: .2rem; margin-left: .2rem; padding-left: .3rem; }
+  .lang-btn { padding: .28rem .32rem; font-size: .5rem; }
 }
 
 
@@ -831,12 +858,17 @@ body.mode-foto .th-foto { color:var(--yellow); }
     <img class="nav-logo-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" alt="Stop Motion MT logo">
     <div class="nav-name">
       Stop Motion MT
-      <span>Mágicas e Truques</span>
+      <span data-i18n="nav.tagline">Mágicas e Truques</span>
     </div>
   </div>
   <div class="nav-actions">
-    <a href="https://play.google.com/store" class="nav-cta" target="_blank" rel="noopener noreferrer">↓ <span class="nav-cta-full">Baixar grátis para Android</span><span class="nav-cta-short">Android</span></a>
-    <a href="https://apps.apple.com" class="nav-cta" target="_blank" rel="noopener noreferrer">↓ <span class="nav-cta-full">Baixar grátis para IOS</span><span class="nav-cta-short">iOS</span></a>
+    <a href="https://play.google.com/store" class="nav-cta" target="_blank" rel="noopener noreferrer">↓ <span class="nav-cta-full" data-i18n="nav.dlAndroidFull">Baixar grátis para Android</span><span class="nav-cta-short" data-i18n="nav.dlAndroidShort">Android</span></a>
+    <a href="https://apps.apple.com" class="nav-cta" target="_blank" rel="noopener noreferrer">↓ <span class="nav-cta-full" data-i18n="nav.dlIosFull">Baixar grátis para IOS</span><span class="nav-cta-short" data-i18n="nav.dlIosShort">iOS</span></a>
+    <div class="lang-switch" role="group" aria-label="Idioma / Language / Idioma">
+      <button type="button" class="lang-btn" data-lang="pt">PT-BR</button>
+      <button type="button" class="lang-btn" data-lang="en">EN</button>
+      <button type="button" class="lang-btn" data-lang="es">ES</button>
+    </div>
   </div>
 </nav>
 
@@ -844,20 +876,20 @@ body.mode-foto .th-foto { color:var(--yellow); }
 <section class="hero">
   <div class="hero-text">
     <div class="hero-label">Android · IOS · v1.2</div>
-    <h1 class="hero-title">
+    <h1 class="hero-title" data-i18n="hero.title">
       Stop Motion<br>
       com controle<br>
       <em>profissional.</em>
     </h1>
-    <p class="hero-sub">
+    <p class="hero-sub" data-i18n="hero.sub">
       StopMotion MT — Mágicas e Truques. Capture frame a frame com controle total de câmera, edite na timeline e exporte as cenas para vídeo MP4 ou sequência de imagens JPG. Feito por animador, para animadores.
     </p>
     <div class="hero-actions">
-      <a href="https://play.google.com/store" class="btn-primary" target="_blank" rel="noopener noreferrer">▶ Baixar na Play Store</a>
-      <a href="https://apps.apple.com" class="btn-primary" target="_blank" rel="noopener noreferrer">▶ Baixar na Apple Store</a>
+      <a href="https://play.google.com/store" class="btn-primary" data-i18n="hero.btnPlay" target="_blank" rel="noopener noreferrer">▶ Baixar na Play Store</a>
+      <a href="https://apps.apple.com" class="btn-primary" data-i18n="hero.btnApple" target="_blank" rel="noopener noreferrer">▶ Baixar na Apple Store</a>
     </div>
     <div class="hero-actions" style="margin-top:.9rem;animation-delay:.75s">
-      <a href="#funcionalidades" class="btn-secondary">Ver funcionalidades →</a>
+      <a href="#funcionalidades" class="btn-secondary" data-i18n="hero.btnFeatures">Ver funcionalidades →</a>
     </div>
   </div>
   <div class="hero-visual">
@@ -875,12 +907,12 @@ body.mode-foto .th-foto { color:var(--yellow); }
   <div class="intro-section">
     <img class="intro-logo" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" alt="Stop Motion MT">
     <div class="intro-text">
-      <div class="section-label">O que é o app</div>
-      <blockquote>"O app que eu sempre quis ter para animar."</blockquote>
-      <p class="section-body">
+      <div class="section-label" data-i18n="intro.label">O que é o app</div>
+      <blockquote data-i18n="intro.quote">"O app que eu sempre quis ter para animar."</blockquote>
+      <p class="section-body" data-i18n="intro.p1">
         Stop Motion MT (de <strong style="color:var(--yellow)">Mágicas e Truques</strong>) é dedicado à animação de objetos, criando a ilusão de movimento a partir da captura de fotografias em sequência. O app traz uma interface simples e intuitiva, com todos os recursos para uma animação de alto nível — do iniciante ao profissional.
       </p>
-      <p class="section-body" style="margin-top:1rem">
+      <p class="section-body" style="margin-top:1rem" data-i18n="intro.p2">
         O principal diferencial: <strong style="color:#bbb">controle remoto total por teclado externo</strong>. Ele pode ser conectado via Bluetooth ou USB, utilizando um adaptador OTG (USB para USB-C). Capture, volte e avance frames, assista em play, ajuste parâmetros de fotografia como velocidade, ISO, WB, foco, zoom e mais — tudo sem tocar na câmera.
       </p>
     </div>
@@ -891,54 +923,54 @@ body.mode-foto .th-foto { color:var(--yellow); }
 <section class="screenshots-section">
   <div class="screenshots-inner">
     <div class="screenshots-header">
-      <div class="section-label">Interface real</div>
-      <h2 class="section-title">O app em ação.</h2>
+      <div class="section-label" data-i18n="shots.label">Interface real</div>
+      <h2 class="section-title" data-i18n="shots.title">O app em ação.</h2>
     </div>
     <div class="screenshots-grid">
 
       <div class="screenshot-card">
-        <img src="images/SMMT_print_Onion-Skin_01.jpg" alt="Controles de animação — Onion Skin, flipar, time-lapse">
-        <div class="screenshot-caption">
+        <img src="images/SMMT_print_Onion-Skin_01.jpg" data-i18n-alt="shots.onion.alt" alt="Controles de animação — Onion Skin, flipar, time-lapse">
+        <div class="screenshot-caption" data-i18n="shots.onion.cap">
           <strong>Controles de Animação</strong>
           Tenha acesso a todos os recursos de animação em uma interface única e intuitiva: Onion Skin, alternância entre Ao Vivo e último frame (flipar), avançar e voltar quadro a quadro, time lapse e muito mais.
         </div>
       </div>
 
       <div class="screenshot-card">
-        <img src="images/SMMT_print_Foto-Manua_04.jpg" alt="Controles de câmera — foco, ISO, velocidade, WB no modo manual">
-        <div class="screenshot-caption">
+        <img src="images/SMMT_print_Foto-Manua_04.jpg" data-i18n-alt="shots.camera.alt" alt="Controles de câmera — foco, ISO, velocidade, WB no modo manual">
+        <div class="screenshot-caption" data-i18n="shots.camera.cap">
           <strong>Controles de Câmera</strong>
           Na lateral direita, o botão quadrado alterna entre as funções de Fotografia e Animação. No modo Fotografia, temos acesso aos botões de foco (Travar Foco, Foco Touch, Auto Foco) e às configurações de fotografia. Alterne entre os modos Automático e Manual para encontrar a luz ideal. Controle toda a fotografia com o modo Manual, ajustando White Balance, velocidade e ISO — tudo acessível sempre no mesmo painel, e também remotamente utilizando um teclado externo.
         </div>
       </div>
 
       <div class="screenshot-card">
-        <img src="images/SMMT_print_Ocultar_03.jpg" alt="Ocultar botões — interface limpa com grid">
-        <div class="screenshot-caption">
+        <img src="images/SMMT_print_Ocultar_03.jpg" data-i18n-alt="shots.hide.alt" alt="Ocultar botões — interface limpa com grid">
+        <div class="screenshot-caption" data-i18n="shots.hide.cap">
           <strong>Ocultar Botões</strong>
           Interface limpa, para visualização mais clara de todos os detalhes da cena, utilizando a função Ocultar Botões (botão do "olho" na lateral direita). Opções de grid para guiar a composição e auxiliar nos enquadramentos.
         </div>
       </div>
 
       <div class="screenshot-card">
-        <img src="images/SMMT_print_Timeline-simples_05.jpg" alt="Timeline com miniaturas numeradas e opções de edição">
-        <div class="screenshot-caption">
+        <img src="images/SMMT_print_Timeline-simples_05.jpg" data-i18n-alt="shots.timeline.alt" alt="Timeline com miniaturas numeradas e opções de edição">
+        <div class="screenshot-caption" data-i18n="shots.timeline.cap">
           <strong>Timeline com Miniaturas</strong>
           Miniaturas numeradas, com opções de selecionar trecho, copiar e colar trechos ou frames individuais — edição completa na linha do tempo, tudo acessível pelo botão de "filme", no canto inferior da lateral esquerda. Pressionando e segurando a miniatura de um frame específico na linha do tempo, é possível aumentar a sua duração escolhendo o número de frames repetidos.
         </div>
       </div>
 
       <div class="screenshot-card">
-        <img src="images/SMMT_print_Vide-Audio_06.jpg" alt="Áudios e vídeos de referência — timeline avançada com trilhas">
-        <div class="screenshot-caption">
+        <img src="images/SMMT_print_Vide-Audio_06.jpg" data-i18n-alt="shots.avref.alt" alt="Áudios e vídeos de referência — timeline avançada com trilhas">
+        <div class="screenshot-caption" data-i18n="shots.avref.cap">
           <strong>Áudios e Vídeos de Referência</strong>
           Carregue vídeos e áudios de referência, edite no app e exporte cenas com vídeos sobrepostos e/ou sonorizadas. É possível ouvir o áudio quadro a quadro, o que possibilita a animação em sincronia com trilhas sonoras e com diálogos, para fazer sincronia labial (lip sync).
         </div>
       </div>
 
       <div class="screenshot-card">
-        <img src="images/SMMT_print_Menu_07.jpg" alt="Menu lateral — nova cena, carregar, importar, exportar">
-        <div class="screenshot-caption">
+        <img src="images/SMMT_print_Menu_07.jpg" data-i18n-alt="shots.menu.alt" alt="Menu lateral — nova cena, carregar, importar, exportar">
+        <div class="screenshot-caption" data-i18n="shots.menu.cap">
           <strong>Menu Lateral</strong>
           No menu lateral você encontra as principais opções: criar nova cena, carregar cena, importar referências e exportar cenas, nos formatos de vídeo e sequência de imagens.
         </div>
@@ -952,57 +984,57 @@ body.mode-foto .th-foto { color:var(--yellow); }
 <section id="funcionalidades">
   <div class="features-inner">
     <div class="features-header">
-      <div class="section-label">Funcionalidades</div>
-      <h2 class="section-title">Tudo o que você precisa<br>para animar com precisão.</h2>
+      <div class="section-label" data-i18n="features.label">Funcionalidades</div>
+      <h2 class="section-title" data-i18n="features.title">Tudo o que você precisa<br>para animar com precisão.</h2>
     </div>
     <div class="features-grid">
 
       <div class="feature-card">
         <span class="feature-icon">⌨️</span>
-        <div class="feature-name">Controle remoto por teclado</div>
-        <p class="feature-desc">Bluetooth ou USB (com adaptador OTG). O teclado numérico já vem mapeado: captura, navegação, FPS, onion skin, foco, zoom, etc. — tudo sem tocar no celular.</p>
+        <div class="feature-name" data-i18n="features.kbd.name">Controle remoto por teclado</div>
+        <p class="feature-desc" data-i18n="features.kbd.desc">Bluetooth ou USB (com adaptador OTG). O teclado numérico já vem mapeado: captura, navegação, FPS, onion skin, foco, zoom, etc. — tudo sem tocar no celular.</p>
       </div>
 
       <div class="feature-card">
         <span class="feature-icon">📷</span>
-        <div class="feature-name">Câmera profissional</div>
-        <p class="feature-desc">Modos de fotografia Automático (com ajuste de EV) e Manual (onde é possível controlar WB, velocidade do obturador e ISO). O foco é operado de forma independente, e também pode ser controlado pelo teclado externo. Configurações salvas por cena.</p>
+        <div class="feature-name" data-i18n="features.cam.name">Câmera profissional</div>
+        <p class="feature-desc" data-i18n="features.cam.desc">Modos de fotografia Automático (com ajuste de EV) e Manual (onde é possível controlar WB, velocidade do obturador e ISO). O foco é operado de forma independente, e também pode ser controlado pelo teclado externo. Configurações salvas por cena.</p>
       </div>
 
       <div class="feature-card">
         <span class="feature-icon">🎞</span>
-        <div class="feature-name">Timeline para edição</div>
-        <p class="feature-desc">Thumbnails numerados, seleção de trecho, colar normal ou invertido, repetir frame com marcação em amarelo, undo de edições.</p>
+        <div class="feature-name" data-i18n="features.timeline.name">Timeline para edição</div>
+        <p class="feature-desc" data-i18n="features.timeline.desc">Thumbnails numerados, seleção de trecho, colar normal ou invertido, repetir frame com marcação em amarelo, undo de edições.</p>
       </div>
 
       <div class="feature-card">
         <span class="feature-icon">🧅</span>
-        <div class="feature-name">Onion Skin & Flip</div>
-        <p class="feature-desc">Onion skin com controle de opacidade e até 5 frames sobrepostos. Flip intermitente ajustável em 1s, ½s ou ¼s.</p>
+        <div class="feature-name" data-i18n="features.onion.name">Onion Skin & Flip</div>
+        <p class="feature-desc" data-i18n="features.onion.desc">Onion skin com controle de opacidade e até 5 frames sobrepostos. Flip intermitente ajustável em 1s, ½s ou ¼s.</p>
       </div>
 
       <div class="feature-card">
         <span class="feature-icon">🎵</span>
-        <div class="feature-name">Referências de áudio e vídeo</div>
-        <p class="feature-desc">Timeline avançada com importação de áudio e vídeo de referência. Modos de edição dedicados (verde = áudio, azul = vídeo).</p>
+        <div class="feature-name" data-i18n="features.avref.name">Referências de áudio e vídeo</div>
+        <p class="feature-desc" data-i18n="features.avref.desc">Timeline avançada com importação de áudio e vídeo de referência. Modos de edição dedicados (verde = áudio, azul = vídeo).</p>
       </div>
 
       <div class="feature-card">
         <span class="feature-icon">⏱</span>
-        <div class="feature-name">Time-lapse</div>
-        <p class="feature-desc">Intervalo ajustável com mínimo de 2s entre capturas, com opção de desligamento automático da tela após 1 minuto de atividade (menu de Configurações) — economize bateria em capturas longas.</p>
+        <div class="feature-name" data-i18n="features.timelapse.name">Time-lapse</div>
+        <p class="feature-desc" data-i18n="features.timelapse.desc">Intervalo ajustável com mínimo de 2s entre capturas, com opção de desligamento automático da tela após 1 minuto de atividade (menu de Configurações) — economize bateria em capturas longas.</p>
       </div>
 
       <div class="feature-card">
         <span class="feature-icon">🔲</span>
-        <div class="feature-name">Grid configurável</div>
-        <p class="feature-desc">Terços, title safe ou quadrado central. Ativável por botão ou tecla de atalho. Ideal para composição precisa de cada frame.</p>
+        <div class="feature-name" data-i18n="features.grid.name">Grid configurável</div>
+        <p class="feature-desc" data-i18n="features.grid.desc">Terços, title safe ou quadrado central. Ativável por botão ou tecla de atalho. Ideal para composição precisa de cada frame.</p>
       </div>
 
       <div class="feature-card">
         <span class="feature-icon">📤</span>
-        <div class="feature-name">Export MP4 ou JPG</div>
-        <p class="feature-desc">Exporte as cenas como vídeo .mp4 ou como sequência de imagens .jpg compactadas em .zip — prontas para Premiere, After Effects ou DaVinci.</p>
+        <div class="feature-name" data-i18n="features.export.name">Export MP4 ou JPG</div>
+        <p class="feature-desc" data-i18n="features.export.desc">Exporte as cenas como vídeo .mp4 ou como sequência de imagens .jpg compactadas em .zip — prontas para Premiere, After Effects ou DaVinci.</p>
       </div>
 
     </div>
@@ -1011,18 +1043,18 @@ body.mode-foto .th-foto { color:var(--yellow); }
     <div class="stats-bar">
       <div class="stat-item">
         <span class="stat-num">3</span>
-        <span class="stat-label">Resoluções: HD / FHD* / 4K*</span>
+        <span class="stat-label" data-i18n="stats.res">Resoluções: HD / FHD* / 4K*</span>
       </div>
       <div class="stat-item">
         <span class="stat-num">3</span>
-        <span class="stat-label">Idiomas: PT / ES / EN</span>
+        <span class="stat-label" data-i18n="stats.lang">Idiomas: PT / ES / EN</span>
       </div>
       <div class="stat-item">
         <span class="stat-num">100%</span>
-        <span class="stat-label">Sem tocar na câmera</span>
+        <span class="stat-label" data-i18n="stats.notouch">Sem tocar na câmera</span>
       </div>
     </div>
-    <p style="font-family:'DM Mono',monospace;font-size:.68rem;color:var(--muted);letter-spacing:.05em;margin-top:1rem;text-align:center">* resoluções de FHD e 4K disponíveis apenas na versão PRO, com compra interna no app, na opção Configurações/Versões e Upgrade</p>
+    <p style="font-family:'DM Mono',monospace;font-size:.68rem;color:var(--muted);letter-spacing:.05em;margin-top:1rem;text-align:center" data-i18n="stats.footnote">* resoluções de FHD e 4K disponíveis apenas na versão PRO, com compra interna no app, na opção Configurações/Versões e Upgrade</p>
   </div>
 </section>
 
@@ -1030,89 +1062,89 @@ body.mode-foto .th-foto { color:var(--yellow); }
 <section class="keyboard-section">
   <div style="max-width:1150px;margin:0 auto">
     <div style="max-width:680px;margin-bottom:3rem">
-      <div class="section-label">Controle remoto</div>
-      <h2 class="section-title">O teclado numérico como controlador completo.</h2>
-      <p class="section-body">Via Bluetooth ou USB com adaptador OTG, o teclado numérico já vem mapeado. Dois modos: <strong style="color:#bbb">Animação</strong> e <strong style="color:#bbb">Fotografia</strong>. A tecla <kbd style="font-family:'DM Mono',monospace;background:#1a1a1a;border:1px solid #333;padding:.1rem .45rem;border-radius:3px;font-size:.85rem;color:var(--yellow)">/</kbd> alterna entre eles. Capture, navegue, ajuste câmera e edite a timeline — sem encostar no aparelho.</p>
+      <div class="section-label" data-i18n="kbd.label">Controle remoto</div>
+      <h2 class="section-title" data-i18n="kbd.title">O teclado numérico como controlador completo.</h2>
+      <p class="section-body" data-i18n="kbd.intro">Via Bluetooth ou USB com adaptador OTG, o teclado numérico já vem mapeado. Dois modos: <strong style="color:#bbb">Animação</strong> e <strong style="color:#bbb">Fotografia</strong>. A tecla <kbd style="font-family:'DM Mono',monospace;background:#1a1a1a;border:1px solid #333;padding:.1rem .45rem;border-radius:3px;font-size:.85rem;color:var(--yellow)">/</kbd> alterna entre eles. Capture, navegue, ajuste câmera e edite a timeline — sem encostar no aparelho.</p>
     </div>
     <div class="numpad-wrap">
       <div>
-        <div class="section-label" style="text-align:center;margin-bottom:1rem">Layout do teclado numérico</div>
+        <div class="section-label" style="text-align:center;margin-bottom:1rem" data-i18n="kbd.layoutLabel">Layout do teclado numérico</div>
         
 <div class="numpad-grid">
 
-  <div class="nk nk-orange" title="Num Lock">
+  <div class="nk nk-orange" data-i18n-title="kbd.key.numlock.title" title="Num Lock">
   <span class="nk-num">num<br>lock</span>
   <div class="nk-icon-box"></div>
 </div>
-  <div class="nk nk-orange" data-anim="Alternar para modo Fotografia" data-foto="Alternar para modo Animação" title="Alternar para modo Fotografia" style="">
+  <div class="nk nk-orange" data-i18n-key="modeToggle" data-anim="Alternar para modo Fotografia" data-foto="Alternar para modo Animação" title="Alternar para modo Fotografia" style="">
   <span class="nk-num">/</span>
   <div class="nk-icon-box"><svg viewBox="0 0 44 32" xmlns="http://www.w3.org/2000/svg" width="46" height="28"><text x="22" y="20" font-size="11" font-weight="bold" font-family="Arial" fill="#c9a200" text-anchor="middle">Foto/Anim.</text></svg></div>
 </div>
-  <div class="nk nk-orange" data-anim="Desfazer (undo)" data-foto="Desfazer (undo)" title="Desfazer (undo)" style="">
+  <div class="nk nk-orange" data-i18n-key="undo" data-anim="Desfazer (undo)" data-foto="Desfazer (undo)" title="Desfazer (undo)" style="">
   <span class="nk-num">*</span>
   <div class="nk-icon-box"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="#c9a200"><path d="M12.5 8c-2.65 0-5.05.99-6.9 2.6L2 7v9h9l-3.62-3.62c1.39-1.16 3.16-1.88 5.12-1.88 3.54 0 6.55 2.31 7.6 5.5l2.37-.78C21.08 11.03 17.15 8 12.5 8z"/></svg></div>
 </div>
-  <div class="nk nk-orange" data-anim="Apagar frame" data-foto="Apagar frame" title="Apagar frame" style="">
+  <div class="nk nk-orange" data-i18n-key="deleteFrame" data-anim="Apagar frame" data-foto="Apagar frame" title="Apagar frame" style="">
   <span class="nk-num">bs</span>
   <div class="nk-icon-box"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="#c9a200"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg></div>
 </div>
 
-  <div class="nk nk-yellow" data-anim="Interface de Edição" data-foto="Modo Manual / Automático" title="Interface de Edição" style="">
+  <div class="nk nk-yellow" data-i18n-key="editUi" data-anim="Interface de Edição" data-foto="Modo Manual / Automático" title="Interface de Edição" style="">
   <span class="nk-num">7</span>
   <div class="nk-icon-box"><svg class="nk-icon-anim" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="#c9a200"><path d="M18 3v2h-2V3H8v2H6V3H4v18h2v-2h2v2h8v-2h2v2h2V3h-2zM8 17H6v-2h2v2zm0-4H6v-2h2v2zm0-4H6V7h2v2zm10 8h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2V7h2v2z"/></svg><svg class="nk-icon-foto" viewBox="0 0 44 32" xmlns="http://www.w3.org/2000/svg" width="46" height="28"><text x="22" y="21" font-size="13" font-weight="bold" font-family="Arial" fill="#c9a200" text-anchor="middle">M/Auto</text></svg></div>
 </div>
-  <div class="nk nk-yellow" data-anim="Time-lapse" data-foto="Zoom" title="Time-lapse" style="">
+  <div class="nk nk-yellow" data-i18n-key="timelapse" data-anim="Time-lapse" data-foto="Zoom" title="Time-lapse" style="">
   <span class="nk-num">8</span>
   <div class="nk-icon-box"><svg class="nk-icon-anim" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="#c9a200"><path d="M15 1H9v2h6V1zm-4 13h2V8h-2v6zm8.03-6.61 1.42-1.42c-.43-.51-.9-.99-1.41-1.41l-1.42 1.42C16.07 4.74 14.12 4 12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9 9-4.03 9-9c0-2.12-.74-4.07-1.97-5.61zM12 20c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/></svg><svg class="nk-icon-foto" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="#c9a200"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zm.5-7H9v2H7v1h2v2h1v-2h2V9h-2z"/></svg></div>
 </div>
-  <div class="nk nk-yellow" data-anim="Grid" data-foto="Foco" title="Grid" style="">
+  <div class="nk nk-yellow" data-i18n-key="grid" data-anim="Grid" data-foto="Foco" title="Grid" style="">
   <span class="nk-num">9</span>
   <div class="nk-icon-box"><svg class="nk-icon-anim" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="#c9a200"><path d="M20 2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM8 20H4v-4h4v4zm0-6H4v-4h4v4zm0-6H4V4h4v4zm6 12h-4v-4h4v4zm0-6h-4v-4h4v4zm0-6h-4V4h4v4zm6 12h-4v-4h4v4zm0-6h-4v-4h4v4zm0-6h-4V4h4v4z"/></svg><svg class="nk-icon-foto" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="#c9a200"><path d="M3 5v4h2V5h4V3H5c-1.1 0-2 .9-2 2zm2 10H3v4c0 1.1.9 2 2 2h4v-2H5v-4zm14 4h-4v2h4c1.1 0 2-.9 2-2v-4h-2v4zm0-16h-4v2h4v4h2V5c0-1.1-.9-2-2-2z"/></svg></div>
 </div>
-  <div class="nk nk-yellow" data-anim="Diminuir FPS" data-foto="Diminuir parâmetro ativo" title="Diminuir FPS" style="">
+  <div class="nk nk-yellow" data-i18n-key="fpsDown" data-anim="Diminuir FPS" data-foto="Diminuir parâmetro ativo" title="Diminuir FPS" style="">
   <span class="nk-num">−</span>
   <div class="nk-icon-box"><svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" width="26" height="26"><text x="16" y="21" font-size="20" font-weight="bold" font-family="Arial" fill="#c9a200" text-anchor="middle">−</text></svg></div>
 </div>
 
-  <div class="nk nk-yellow" data-anim="Flipar" data-foto="ISO" title="Flipar" style="">
+  <div class="nk nk-yellow" data-i18n-key="flip" data-anim="Flipar" data-foto="ISO" title="Flipar" style="">
   <span class="nk-num">4</span>
   <div class="nk-icon-box"><svg class="nk-icon-anim" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="#c9a200"><path d="M15 21h2v-2h-2v2zm4-12h2V7h-2v2zM3 5v14c0 1.1.9 2 2 2h4v-2H5V5h4V3H5c-1.1 0-2 .9-2 2zm16-2v2h2c0-1.1-.9-2-2-2zm-8 20h2V1h-2v22zm8-6h2v-2h-2v2zM15 5h2V3h-2v2zm4 8h2v-2h-2v2zm0 8c1.1 0 2-.9 2-2h-2v2z"/></svg><svg class="nk-icon-foto" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" width="26" height="26"><text x="16" y="21" font-size="14" font-weight="bold" font-family="Arial" fill="#c9a200" text-anchor="middle">ISO</text></svg></div>
 </div>
-  <div class="nk nk-yellow" data-anim="Onion Skin" data-foto="Velocidade do obturador" title="Onion Skin" style="">
+  <div class="nk nk-yellow" data-i18n-key="onion" data-anim="Onion Skin" data-foto="Velocidade do obturador" title="Onion Skin" style="">
   <span class="nk-num">5</span>
   <div class="nk-icon-box"><svg class="nk-icon-anim" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" width="26" height="26"><text x="16" y="24" font-size="22" text-anchor="middle">🧅</text></svg><svg class="nk-icon-foto" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" width="26" height="26"><text x="16" y="21" font-size="14" font-weight="bold" font-family="Arial" fill="#c9a200" text-anchor="middle">Vel</text></svg></div>
 </div>
-  <div class="nk nk-yellow" data-anim="Opções de play" data-foto="EV — Compensação de exposição" title="Opções de play" style="">
+  <div class="nk nk-yellow" data-i18n-key="playOptions" data-anim="Opções de play" data-foto="EV — Compensação de exposição" title="Opções de play" style="">
   <span class="nk-num">6</span>
   <div class="nk-icon-box"><svg class="nk-icon-anim" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="#c9a200"><path d="M4 5v14h2V5H4zm14 0v14h2V5h-2zM8 5v14l9-7L8 5z"/></svg><svg class="nk-icon-foto" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="#c9a200"><path d="M15 17v2h2v-2h2v-2h-2v-2h-2v2h-2v2h2zm5-15H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM5 5h6v2H5V5zm15 15H4L20 4v16z"/></svg></div>
 </div>
-  <div class="nk nk-yellow" data-anim="Aumentar FPS" data-foto="Aumentar parâmetro ativo" title="Aumentar FPS" style="">
+  <div class="nk nk-yellow" data-i18n-key="fpsUp" data-anim="Aumentar FPS" data-foto="Aumentar parâmetro ativo" title="Aumentar FPS" style="">
   <span class="nk-num">+</span>
   <div class="nk-icon-box"><svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" width="26" height="26"><text x="16" y="21" font-size="20" font-weight="bold" font-family="Arial" fill="#c9a200" text-anchor="middle">+</text></svg></div>
 </div>
 
-  <div class="nk nk-orange" data-anim="Voltar um frame" data-foto="Voltar um frame" title="Voltar um frame" style="">
+  <div class="nk nk-orange" data-i18n-key="frameBack" data-anim="Voltar um frame" data-foto="Voltar um frame" title="Voltar um frame" style="">
   <span class="nk-num">1</span>
   <div class="nk-icon-box"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="#c9a200"><path d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg></div>
 </div>
-  <div class="nk nk-orange" data-anim="Avançar um frame" data-foto="Avançar um frame" title="Avançar um frame" style="">
+  <div class="nk nk-orange" data-i18n-key="frameFwd" data-anim="Avançar um frame" data-foto="Avançar um frame" title="Avançar um frame" style="">
   <span class="nk-num">2</span>
   <div class="nk-icon-box"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="#c9a200"><path d="M10 6 8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></div>
 </div>
-  <div class="nk nk-yellow" data-anim="Pular para câmera ao vivo" data-foto="WB — Balanço de branco" title="Pular para câmera ao vivo" style="">
+  <div class="nk nk-yellow" data-i18n-key="live" data-anim="Pular para câmera ao vivo" data-foto="WB — Balanço de branco" title="Pular para câmera ao vivo" style="">
   <span class="nk-num">3</span>
   <div class="nk-icon-box"><svg class="nk-icon-anim" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="#c9a200"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg><svg class="nk-icon-foto" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" width="26" height="26"><text x="16" y="21" font-size="14" font-weight="bold" font-family="Arial" fill="#c9a200" text-anchor="middle">WB</text></svg></div>
 </div>
-  <div class="nk nk-orange nk-enter" data-anim="Capturar frame" data-foto="Capturar frame" title="Capturar frame" style="grid-row:span 2; height:calc(144px + 6px)">
+  <div class="nk nk-orange nk-enter" data-i18n-key="capture" data-anim="Capturar frame" data-foto="Capturar frame" title="Capturar frame" style="grid-row:span 2; height:calc(144px + 6px)">
   <span class="nk-num">enter</span>
   <div class="nk-icon-box"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="#c9a200"><path d="M12 12m-8 0a8 8 0 1 0 16 0a8 8 0 1 0 -16 0"/></svg></div>
 </div>
 
-  <div class="nk nk-orange nk-wide" data-anim="Play / Pause" data-foto="Play / Pause" title="Play / Pause" style="grid-column:span 2; width:calc(144px + 6px)">
+  <div class="nk nk-orange nk-wide" data-i18n-key="playPause" data-anim="Play / Pause" data-foto="Play / Pause" title="Play / Pause" style="grid-column:span 2; width:calc(144px + 6px)">
   <span class="nk-num">0</span>
   <div class="nk-icon-box"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="#c9a200"><path d="M8 5v14l11-7z"/></svg></div>
 </div>
-  <div class="nk nk-orange" data-anim="Ocultar/revelar botões" data-foto="Ocultar/revelar botões" title="Ocultar/revelar botões" style="">
+  <div class="nk nk-orange" data-i18n-key="hideButtons" data-anim="Ocultar/revelar botões" data-foto="Ocultar/revelar botões" title="Ocultar/revelar botões" style="">
   <span class="nk-num">.</span>
   <div class="nk-icon-box"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="#c9a200"><path d="M12 7c2.76 0 5 2.24 5 5 0 .65-.13 1.26-.36 1.83l2.92 2.92c1.51-1.26 2.7-2.89 3.43-4.75-1.73-4.39-6-7.5-11-7.5-1.4 0-2.74.25-3.98.7l2.16 2.16C10.74 7.13 11.35 7 12 7zM2 4.27l2.28 2.28.46.46C3.08 8.3 1.78 10.02 1 12c1.73 4.39 6 7.5 11 7.5 1.55 0 3.03-.3 4.38-.84l.42.42L19.73 22 21 20.73 3.27 3 2 4.27zM7.53 9.8l1.55 1.55c-.05.21-.08.43-.08.65 0 1.66 1.34 3 3 3 .22 0 .44-.03.65-.08l1.55 1.55c-.67.33-1.41.53-2.2.53-2.76 0-5-2.24-5-5 0-.79.2-1.53.53-2.2zm4.31-.78l3.15 3.15.02-.16c0-1.66-1.34-3-3-3l-.17.01z"/></svg></div>
 </div>
@@ -1120,34 +1152,34 @@ body.mode-foto .th-foto { color:var(--yellow); }
 </div>
 
         <div class="kbd-toggle">
-          <button id="btn-anim" class="kt-active" onclick="kbdMode('anim')">Animação</button>
-          <button id="btn-foto" class="kt-inactive" onclick="kbdMode('foto')">Fotografia</button>
+          <button id="btn-anim" class="kt-active" onclick="kbdMode('anim')" data-i18n="kbd.animBtn">Animação</button>
+          <button id="btn-foto" class="kt-inactive" onclick="kbdMode('foto')" data-i18n="kbd.fotoBtn">Fotografia</button>
         </div>
-        <p style="text-align:center;font-family:'DM Mono',monospace;font-size:.63rem;color:#333;margin-top:.6rem;letter-spacing:.08em">Passe o mouse sobre cada tecla para ver a função</p>
+        <p style="text-align:center;font-family:'DM Mono',monospace;font-size:.63rem;color:#333;margin-top:.6rem;letter-spacing:.08em" data-i18n="kbd.hint">Passe o mouse sobre cada tecla para ver a função</p>
       </div>
       
 <div style="flex:1;min-width:280px;max-width:560px">
-  <div class="section-label" style="margin-bottom:1rem">Referência completa de atalhos</div>
+  <div class="section-label" style="margin-bottom:1rem" data-i18n="kbdref.label">Referência completa de atalhos</div>
   <div style="overflow-x:auto">
     <table class="kbd-ref-table">
-      <thead><tr><th class="th-key">Tecla</th><th class="th-anim" onclick="kbdMode('anim')" style="cursor:pointer" title="Clique para ver o modo Animação">Modo Animação</th><th class="th-foto" onclick="kbdMode('foto')" style="cursor:pointer" title="Clique para ver o modo Fotografia">Modo Fotografia</th></tr></thead>
-      <tbody><tr><td class="td-key">Enter</td><td class="td-anim">Capturar frame</td><td class="td-foto">Capturar frame</td></tr>
-<tr><td class="td-key">0</td><td class="td-anim">Play / Pause</td><td class="td-foto">Play / Pause</td></tr>
-<tr><td class="td-key">1</td><td class="td-anim">Voltar um frame</td><td class="td-foto">Voltar um frame</td></tr>
-<tr><td class="td-key">2</td><td class="td-anim">Avançar um frame</td><td class="td-foto">Avançar um frame</td></tr>
-<tr><td class="td-key">.</td><td class="td-anim">Ocultar/revelar botões (1 seg: abre Opções de Ocultar; + e − seleciona)</td><td class="td-foto">Ocultar/revelar botões (1 seg: abre Opções de Ocultar; + e − seleciona)</td></tr>
-<tr><td class="td-key">3</td><td class="td-anim">Pular para câmera ao vivo</td><td class="td-foto">WB — Balanço de branco (+ e − seleciona)</td></tr>
-<tr><td class="td-key">4</td><td class="td-anim">Flipar (+ e − seleciona velocidade: 1s, ½s, ¼s)</td><td class="td-foto">ISO (+ e − seleciona)</td></tr>
-<tr><td class="td-key">5</td><td class="td-anim">Onion Skin (+ e − ajusta opacidade; 1 seg: Opções de Onion Skin)</td><td class="td-foto">Velocidade do obturador (+ e − seleciona)</td></tr>
-<tr><td class="td-key">6</td><td class="td-anim">Opções de play: loop, trecho, loop+trecho (6 confirma; 1 seg: abre menu)</td><td class="td-foto">EV — Compensação de exposição (+ e − seleciona)</td></tr>
-<tr><td class="td-key">7</td><td class="td-anim">Interface de Edição (abre timeline)</td><td class="td-foto">Modo Manual / Automático</td></tr>
-<tr><td class="td-key">8</td><td class="td-anim">Time-lapse (+ e − ajusta intervalo; 1 seg: opção desligar tela)</td><td class="td-foto">Zoom (+ e − aproxima e afasta)</td></tr>
-<tr><td class="td-key">9</td><td class="td-anim">Grid (+ e − muda formato)</td><td class="td-foto">Foco (+ e − seleciona; 1 seg: trava/destrava)</td></tr>
-<tr><td class="td-key">+</td><td class="td-anim">Aumentar FPS</td><td class="td-foto">Aumentar parâmetro ativo</td></tr>
-<tr><td class="td-key">−</td><td class="td-anim">Diminuir FPS</td><td class="td-foto">Diminuir parâmetro ativo</td></tr>
-<tr><td class="td-key">BS</td><td class="td-anim">Apagar frame</td><td class="td-foto">Apagar frame</td></tr>
-<tr><td class="td-key">*</td><td class="td-anim">Desfazer (undo)</td><td class="td-foto">Desfazer (undo)</td></tr>
-<tr><td class="td-key">/</td><td class="td-anim">Alternar para modo Fotografia</td><td class="td-foto">Alternar para modo Animação</td></tr>
+      <thead><tr><th class="th-key" data-i18n="kbdref.thKey">Tecla</th><th class="th-anim" onclick="kbdMode('anim')" style="cursor:pointer" data-i18n-title="kbdref.thAnimTitle" title="Clique para ver o modo Animação" data-i18n="kbdref.thAnim">Modo Animação</th><th class="th-foto" onclick="kbdMode('foto')" style="cursor:pointer" data-i18n-title="kbdref.thFotoTitle" title="Clique para ver o modo Fotografia" data-i18n="kbdref.thFoto">Modo Fotografia</th></tr></thead>
+      <tbody><tr><td class="td-key">Enter</td><td class="td-anim" data-i18n="kbdref.row.capture.anim">Capturar frame</td><td class="td-foto" data-i18n="kbdref.row.capture.foto">Capturar frame</td></tr>
+<tr><td class="td-key">0</td><td class="td-anim" data-i18n="kbdref.row.playPause.anim">Play / Pause</td><td class="td-foto" data-i18n="kbdref.row.playPause.foto">Play / Pause</td></tr>
+<tr><td class="td-key">1</td><td class="td-anim" data-i18n="kbdref.row.frameBack.anim">Voltar um frame</td><td class="td-foto" data-i18n="kbdref.row.frameBack.foto">Voltar um frame</td></tr>
+<tr><td class="td-key">2</td><td class="td-anim" data-i18n="kbdref.row.frameFwd.anim">Avançar um frame</td><td class="td-foto" data-i18n="kbdref.row.frameFwd.foto">Avançar um frame</td></tr>
+<tr><td class="td-key">.</td><td class="td-anim" data-i18n="kbdref.row.hideButtons.anim">Ocultar/revelar botões (1 seg: abre Opções de Ocultar; + e − seleciona)</td><td class="td-foto" data-i18n="kbdref.row.hideButtons.foto">Ocultar/revelar botões (1 seg: abre Opções de Ocultar; + e − seleciona)</td></tr>
+<tr><td class="td-key">3</td><td class="td-anim" data-i18n="kbdref.row.live.anim">Pular para câmera ao vivo</td><td class="td-foto" data-i18n="kbdref.row.live.foto">WB — Balanço de branco (+ e − seleciona)</td></tr>
+<tr><td class="td-key">4</td><td class="td-anim" data-i18n="kbdref.row.flip.anim">Flipar (+ e − seleciona velocidade: 1s, ½s, ¼s)</td><td class="td-foto" data-i18n="kbdref.row.flip.foto">ISO (+ e − seleciona)</td></tr>
+<tr><td class="td-key">5</td><td class="td-anim" data-i18n="kbdref.row.onion.anim">Onion Skin (+ e − ajusta opacidade; 1 seg: Opções de Onion Skin)</td><td class="td-foto" data-i18n="kbdref.row.onion.foto">Velocidade do obturador (+ e − seleciona)</td></tr>
+<tr><td class="td-key">6</td><td class="td-anim" data-i18n="kbdref.row.playOptions.anim">Opções de play: loop, trecho, loop+trecho (6 confirma; 1 seg: abre menu)</td><td class="td-foto" data-i18n="kbdref.row.playOptions.foto">EV — Compensação de exposição (+ e − seleciona)</td></tr>
+<tr><td class="td-key">7</td><td class="td-anim" data-i18n="kbdref.row.editUi.anim">Interface de Edição (abre timeline)</td><td class="td-foto" data-i18n="kbdref.row.editUi.foto">Modo Manual / Automático</td></tr>
+<tr><td class="td-key">8</td><td class="td-anim" data-i18n="kbdref.row.timelapse.anim">Time-lapse (+ e − ajusta intervalo; 1 seg: opção desligar tela)</td><td class="td-foto" data-i18n="kbdref.row.timelapse.foto">Zoom (+ e − aproxima e afasta)</td></tr>
+<tr><td class="td-key">9</td><td class="td-anim" data-i18n="kbdref.row.grid.anim">Grid (+ e − muda formato)</td><td class="td-foto" data-i18n="kbdref.row.grid.foto">Foco (+ e − seleciona; 1 seg: trava/destrava)</td></tr>
+<tr><td class="td-key">+</td><td class="td-anim" data-i18n="kbdref.row.fpsUp.anim">Aumentar FPS</td><td class="td-foto" data-i18n="kbdref.row.fpsUp.foto">Aumentar parâmetro ativo</td></tr>
+<tr><td class="td-key">−</td><td class="td-anim" data-i18n="kbdref.row.fpsDown.anim">Diminuir FPS</td><td class="td-foto" data-i18n="kbdref.row.fpsDown.foto">Diminuir parâmetro ativo</td></tr>
+<tr><td class="td-key">BS</td><td class="td-anim" data-i18n="kbdref.row.deleteFrame.anim">Apagar frame</td><td class="td-foto" data-i18n="kbdref.row.deleteFrame.foto">Apagar frame</td></tr>
+<tr><td class="td-key">*</td><td class="td-anim" data-i18n="kbdref.row.undo.anim">Desfazer (undo)</td><td class="td-foto" data-i18n="kbdref.row.undo.foto">Desfazer (undo)</td></tr>
+<tr><td class="td-key">/</td><td class="td-anim" data-i18n="kbdref.row.modeToggle.anim">Alternar para modo Fotografia</td><td class="td-foto" data-i18n="kbdref.row.modeToggle.foto">Alternar para modo Animação</td></tr>
 </tbody>
     </table>
   </div>
@@ -1162,52 +1194,52 @@ body.mode-foto .th-foto { color:var(--yellow); }
 <!-- WORKFLOW -->
 <section>
   <div class="workflow-inner">
-    <div class="section-label">Fluxo de trabalho</div>
-    <h2 class="section-title">Do setup à exportação<br>com total controle.</h2>
+    <div class="section-label" data-i18n="workflow.label">Fluxo de trabalho</div>
+    <h2 class="section-title" data-i18n="workflow.title">Do setup à exportação<br>com total controle.</h2>
     <div class="workflow-steps">
 
       <div class="workflow-step">
         <div class="step-num">01</div>
         <div class="step-content">
-          <span class="step-tag">Configuração</span>
-          <h3>Crie sua cena</h3>
-          <p>Defina nome e resolução (HD, Full HD ou 4K). O app cria proxies automáticos para FHD e 4K, garantindo reprodução fluida mesmo em fps alta. Configurações de câmera ficam salvas por cena.</p>
+          <span class="step-tag" data-i18n="workflow.step1.tag">Configuração</span>
+          <h3 data-i18n="workflow.step1.h3">Crie sua cena</h3>
+          <p data-i18n="workflow.step1.p">Defina nome e resolução (HD, Full HD ou 4K). O app cria proxies automáticos para FHD e 4K, garantindo reprodução fluida mesmo em fps alta. Configurações de câmera ficam salvas por cena.</p>
         </div>
       </div>
 
       <div class="workflow-step">
         <div class="step-num">02</div>
         <div class="step-content">
-          <span class="step-tag">Captura</span>
-          <h3>Anime frame a frame</h3>
-          <p>Capture pela tela ou por teclado externo. Use Onion Skin e Flip para guiar o movimento. O indicador AO VIVO mostra quando você está vendo a imagem da câmera, não um frame capturado.</p>
+          <span class="step-tag" data-i18n="workflow.step2.tag">Captura</span>
+          <h3 data-i18n="workflow.step2.h3">Anime frame a frame</h3>
+          <p data-i18n="workflow.step2.p">Capture pela tela ou por teclado externo. Use Onion Skin e Flip para guiar o movimento. O indicador AO VIVO mostra quando você está vendo a imagem da câmera, não um frame capturado.</p>
         </div>
       </div>
 
       <div class="workflow-step">
         <div class="step-num">03</div>
         <div class="step-content">
-          <span class="step-tag">Edição</span>
-          <h3>Refine na timeline</h3>
-          <p>Selecione trechos, copie ou cole (normal ou invertido). Repita frames com marcação visual. A Ficha de Edições protege os originais — nenhum arquivo de imagem é alterado ou apagado.</p>
+          <span class="step-tag" data-i18n="workflow.step3.tag">Edição</span>
+          <h3 data-i18n="workflow.step3.h3">Refine na timeline</h3>
+          <p data-i18n="workflow.step3.p">Selecione trechos, copie ou cole (normal ou invertido). Repita frames com marcação visual. A Ficha de Edições protege os originais — nenhum arquivo de imagem é alterado ou apagado.</p>
         </div>
       </div>
 
       <div class="workflow-step">
         <div class="step-num">04</div>
         <div class="step-content">
-          <span class="step-tag">Referência</span>
-          <h3>Importe áudio e vídeo</h3>
-          <p>Na Timeline Avançada, importe referências de áudio e vídeo. Sincronize o áudio com lip sync e ação com precisão frame a frame antes de exportar.</p>
+          <span class="step-tag" data-i18n="workflow.step4.tag">Referência</span>
+          <h3 data-i18n="workflow.step4.h3">Importe áudio e vídeo</h3>
+          <p data-i18n="workflow.step4.p">Na Timeline Avançada, importe referências de áudio e vídeo. Sincronize o áudio com lip sync e ação com precisão frame a frame antes de exportar.</p>
         </div>
       </div>
 
       <div class="workflow-step">
         <div class="step-num">05</div>
         <div class="step-content">
-          <span class="step-tag">Export</span>
-          <h3>Exporte e entregue</h3>
-          <p>MP4 para visualização imediata. Sequência .jpg em .zip para edição no Premiere, After Effects ou DaVinci.</p>
+          <span class="step-tag" data-i18n="workflow.step5.tag">Export</span>
+          <h3 data-i18n="workflow.step5.h3">Exporte e entregue</h3>
+          <p data-i18n="workflow.step5.p">MP4 para visualização imediata. Sequência .jpg em .zip para edição no Premiere, After Effects ou DaVinci.</p>
         </div>
       </div>
 
@@ -1219,30 +1251,30 @@ body.mode-foto .th-foto { color:var(--yellow); }
 <section class="export-section">
   <div class="export-inner">
     <div>
-      <div class="section-label">Export</div>
-      <h2 class="section-title">Pronto para<br>qualquer pipeline.</h2>
-      <p class="section-body">Exporte direto do menu lateral sem precisar carregar a cena. Duas opções de saída, compatíveis com os principais softwares de edição e composição.</p>
+      <div class="section-label" data-i18n="export.label">Export</div>
+      <h2 class="section-title" data-i18n="export.title">Pronto para<br>qualquer pipeline.</h2>
+      <p class="section-body" data-i18n="export.p">Exporte direto do menu lateral sem precisar carregar a cena. Duas opções de saída, compatíveis com os principais softwares de edição e composição.</p>
     </div>
     <div class="export-cards">
       <div class="export-card">
         <div class="export-icon">🎬</div>
         <div>
-          <div class="export-label">Vídeo MP4</div>
-          <div class="export-desc">H.264 com progresso em tempo real, acessível pelo gerenciador de arquivos.</div>
+          <div class="export-label" data-i18n="export.card1.label">Vídeo MP4</div>
+          <div class="export-desc" data-i18n="export.card1.desc">H.264 com progresso em tempo real, acessível pelo gerenciador de arquivos.</div>
         </div>
       </div>
       <div class="export-card">
         <div class="export-icon">📦</div>
         <div>
-          <div class="export-label">Sequência de imagens .JPG</div>
-          <div class="export-desc">Frames .jpg numerados em ordem sequencial compactadas em um arquivo .zip. Arraste direto para Premiere, After FX ou DaVinci.</div>
+          <div class="export-label" data-i18n="export.card2.label">Sequência de imagens .JPG</div>
+          <div class="export-desc" data-i18n="export.card2.desc">Frames .jpg numerados em ordem sequencial compactadas em um arquivo .zip. Arraste direto para Premiere, After FX ou DaVinci.</div>
         </div>
       </div>
       <div class="export-card">
         <div class="export-icon">🔄</div>
         <div>
-          <div class="export-label">Backup e portabilidade</div>
-          <div class="export-desc">Exporte a pasta de cena completa para backup ou para continuar animando em outro aparelho.</div>
+          <div class="export-label" data-i18n="export.card3.label">Backup e portabilidade</div>
+          <div class="export-desc" data-i18n="export.card3.desc">Exporte a pasta de cena completa para backup ou para continuar animando em outro aparelho.</div>
         </div>
       </div>
     </div>
@@ -1254,15 +1286,15 @@ body.mode-foto .th-foto { color:var(--yellow); }
   <div class="about-inner">
     <img class="about-logo" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" alt="Pedro Iuá">
     <div>
-      <div class="section-label">Sobre o criador</div>
-      <blockquote>"Animador profissional com 28 anos de experiência. Fiz o app que eu sempre quis ter para animar e ensinar animação."</blockquote>
-      <p class="section-body">
+      <div class="section-label" data-i18n="about.label">Sobre o criador</div>
+      <blockquote data-i18n="about.quote">"Animador profissional com 28 anos de experiência. Fiz o app que eu sempre quis ter para animar e ensinar animação."</blockquote>
+      <p class="section-body" data-i18n="about.p1">
         Stop Motion MT foi desenvolvido por <strong style="color:#bbb">Pedro Iuá</strong>, animador brasileiro. Cada funcionalidade vem de uma necessidade real da animação profissional — testada em hardware real, aperfeiçoada continuamente em um fluxo real de trabalho.
       </p>
-      <p class="section-body" style="margin-top:.9rem">
+      <p class="section-body" style="margin-top:.9rem" data-i18n="about.p2">
         O objetivo é democratizar o stop motion: da primeira animação de um estudante até projetos de nível profissional, com as mesmas ferramentas.
       </p>
-      <div class="dev-meta">Rio de Janeiro · Brasil · Pedro Iuá · 2026</div>
+      <div class="dev-meta" data-i18n="about.meta">Rio de Janeiro · Brasil · Pedro Iuá · 2026</div>
     </div>
   </div>
 </section>
@@ -1271,19 +1303,19 @@ body.mode-foto .th-foto { color:var(--yellow); }
 <section class="cta-section">
   <div class="cta-bg"></div>
   <div class="cta-inner">
-    <div class="section-label">Disponível agora</div>
-    <span class="price-badge" style="margin-bottom:.6rem">✦ Versão gratuita completa com resolução máxima de 1280 x 720 px</span><br>
-    <span class="price-badge">✦ Versão PRO, com compra no app, para desbloquear resoluções Full HD e 4K</span>
-    <h2 class="section-title" style="font-size:clamp(2.5rem,6vw,4.5rem);margin-bottom:1.2rem">
+    <div class="section-label" data-i18n="cta.label">Disponível agora</div>
+    <span class="price-badge" style="margin-bottom:.6rem" data-i18n="cta.badge1">✦ Versão gratuita completa com resolução máxima de 1280 x 720 px</span><br>
+    <span class="price-badge" data-i18n="cta.badge2">✦ Versão PRO, com compra no app, para desbloquear resoluções Full HD e 4K</span>
+    <h2 class="section-title" style="font-size:clamp(2.5rem,6vw,4.5rem);margin-bottom:1.2rem" data-i18n="cta.title">
       Comece a animar<br>
       <em style="color:var(--yellow)">hoje.</em>
     </h2>
-    <p class="section-body" style="max-width:480px;margin:0 auto 2.5rem">
+    <p class="section-body" style="max-width:480px;margin:0 auto 2.5rem" data-i18n="cta.p">
       Baixe Stop Motion MT e descubra o que é capturar stop motion com controle de câmera real, conexão com teclado externo e timeline profissional.
     </p>
     <div style="display:flex;gap:.9rem;justify-content:center;flex-wrap:wrap">
-      <a href="https://play.google.com/store" class="btn-primary" style="font-size:.95rem;padding:1.1rem 2.8rem" target="_blank" rel="noopener noreferrer">▶ Baixar na Play Store</a>
-      <a href="https://apps.apple.com" class="btn-primary" style="font-size:.95rem;padding:1.1rem 2.8rem" target="_blank" rel="noopener noreferrer">▶ Baixar na Apple Store</a>
+      <a href="https://play.google.com/store" class="btn-primary" style="font-size:.95rem;padding:1.1rem 2.8rem" data-i18n="hero.btnPlay" target="_blank" rel="noopener noreferrer">▶ Baixar na Play Store</a>
+      <a href="https://apps.apple.com" class="btn-primary" style="font-size:.95rem;padding:1.1rem 2.8rem" data-i18n="hero.btnApple" target="_blank" rel="noopener noreferrer">▶ Baixar na Apple Store</a>
     </div>
   </div>
   <div class="cta-line"></div>
@@ -1295,7 +1327,7 @@ body.mode-foto .th-foto { color:var(--yellow); }
     <img class="footer-logo-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" alt="Stop Motion MT">
     <span class="footer-name">Stop Motion MT © 2026</span>
   </div>
-  <div class="footer-copy">Desenvolvido por Pedro Iuá · Rio de Janeiro</div>
+  <div class="footer-copy" data-i18n="footer.copy">Desenvolvido por Pedro Iuá · Rio de Janeiro</div>
 </footer>
 
 <script>
@@ -1323,17 +1355,342 @@ body.mode-foto .th-foto { color:var(--yellow); }
   steps.forEach(s => obs.observe(s));
 
   // ── Teclado: toggle Animação / Fotografia ──
-  function kbdMode(mode) {
-    const isAnim = mode === 'anim';
-    document.body.classList.toggle('mode-foto', !isAnim);
-    document.getElementById('btn-anim').className = isAnim ? 'kt-active' : 'kt-inactive';
-    document.getElementById('btn-foto').className = isAnim ? 'kt-inactive' : 'kt-active';
-    document.querySelectorAll('.nk-icon-anim').forEach(el => el.style.display = isAnim ? 'block' : 'none');
-    document.querySelectorAll('.nk-icon-foto').forEach(el => el.style.display = isAnim ? 'none' : 'block');
+  let kbdIsAnim = true;
+  function refreshNumpadTitles() {
     document.querySelectorAll('.nk[data-anim]').forEach(el => {
-      el.title = isAnim ? el.dataset.anim : el.dataset.foto;
+      el.title = kbdIsAnim ? el.dataset.anim : el.dataset.foto;
     });
   }
+  function kbdMode(mode) {
+    kbdIsAnim = mode === 'anim';
+    document.body.classList.toggle('mode-foto', !kbdIsAnim);
+    document.getElementById('btn-anim').className = kbdIsAnim ? 'kt-active' : 'kt-inactive';
+    document.getElementById('btn-foto').className = kbdIsAnim ? 'kt-inactive' : 'kt-active';
+    document.querySelectorAll('.nk-icon-anim').forEach(el => el.style.display = kbdIsAnim ? 'block' : 'none');
+    document.querySelectorAll('.nk-icon-foto').forEach(el => el.style.display = kbdIsAnim ? 'none' : 'block');
+    refreshNumpadTitles();
+  }
+
+  // ── i18n: PT-BR (padrão do HTML) / EN / ES ──
+  (function () {
+    const originalText = {};
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (!(key in originalText)) originalText[key] = el.innerHTML;
+    });
+    const originalAlt = {};
+    document.querySelectorAll('[data-i18n-alt]').forEach(el => {
+      originalAlt[el.getAttribute('data-i18n-alt')] = el.getAttribute('alt');
+    });
+    const originalTitleAttr = {};
+    document.querySelectorAll('[data-i18n-title]').forEach(el => {
+      originalTitleAttr[el.getAttribute('data-i18n-title')] = el.getAttribute('title');
+    });
+    const originalNumpad = {};
+    document.querySelectorAll('.nk[data-i18n-key]').forEach(el => {
+      originalNumpad[el.dataset.i18nKey] = { anim: el.dataset.anim, foto: el.dataset.foto };
+    });
+    const originalDocTitle = document.title;
+
+    const T = {
+      en: {
+        docTitle: `Stop Motion MT — Magic and Tricks`,
+        'nav.tagline': `Magic and Tricks`,
+        'nav.dlAndroidFull': `Download free for Android`,
+        'nav.dlAndroidShort': `Android`,
+        'nav.dlIosFull': `Download free for iOS`,
+        'nav.dlIosShort': `iOS`,
+        'hero.title': `Stop Motion<br>with professional<br><em>control.</em>`,
+        'hero.sub': `StopMotion MT — Magic and Tricks. Capture frame by frame with full camera control, edit on the timeline and export your scenes as MP4 video or a JPG image sequence. Made by an animator, for animators.`,
+        'hero.btnPlay': `▶ Get it on Play Store`,
+        'hero.btnApple': `▶ Get it on the App Store`,
+        'hero.btnFeatures': `See features →`,
+        'intro.label': `What the app is`,
+        'intro.quote': `"The app I always wanted to have for animating."`,
+        'intro.p1': `Stop Motion MT (from <strong style="color:var(--yellow)">Magic and Tricks</strong>) is dedicated to object animation, creating the illusion of movement from a sequence of captured photographs. The app offers a simple, intuitive interface with everything you need for high-level animation — from beginner to professional.`,
+        'intro.p2': `The main differentiator: <strong style="color:#bbb">total remote control via an external keyboard</strong>. It can be connected via Bluetooth or USB, using an OTG adapter (USB to USB-C). Capture, go back and forward through frames, watch playback, adjust photo settings like shutter speed, ISO, WB, focus, zoom and more — all without touching the camera.`,
+        'shots.label': `Real interface`,
+        'shots.title': `The app in action.`,
+        'shots.onion.alt': `Animation controls — Onion Skin, flip, time-lapse`,
+        'shots.onion.cap': `<strong>Animation Controls</strong>Access all animation features in one intuitive interface: Onion Skin, switching between Live and the last frame (flip), stepping forward and back frame by frame, time-lapse and much more.`,
+        'shots.camera.alt': `Camera controls — focus, ISO, shutter speed, WB in manual mode`,
+        'shots.camera.cap': `<strong>Camera Controls</strong>On the right side, the square button switches between Photo and Animation functions. In Photo mode, you get access to the focus buttons (Lock Focus, Touch Focus, Auto Focus) and photo settings. Switch between Automatic and Manual modes to find the ideal light. Control every aspect of the photo with Manual mode, adjusting White Balance, shutter speed and ISO — all accessible on the same panel, and also remotely using an external keyboard.`,
+        'shots.hide.alt': `Hide buttons — clean interface with grid`,
+        'shots.hide.cap': `<strong>Hide Buttons</strong>A clean interface for a clearer view of every detail of the scene, using the Hide Buttons feature (the "eye" button on the right side). Grid options to guide composition and help with framing.`,
+        'shots.timeline.alt': `Timeline with numbered thumbnails and editing options`,
+        'shots.timeline.cap': `<strong>Timeline with Thumbnails</strong>Numbered thumbnails, with options to select a section, copy and paste sections or individual frames — full timeline editing, all accessible from the "film" button in the bottom corner of the left sidebar. Pressing and holding a specific frame's thumbnail in the timeline lets you increase its duration by choosing the number of repeated frames.`,
+        'shots.avref.alt': `Reference audio and video — advanced timeline with tracks`,
+        'shots.avref.cap': `<strong>Reference Audio and Video</strong>Load reference videos and audio, edit them in the app and export scenes with overlaid video and/or sound. You can listen to the audio frame by frame, which makes it possible to animate in sync with soundtracks and dialogue, for lip sync.`,
+        'shots.menu.alt': `Side menu — new scene, load, import, export`,
+        'shots.menu.cap': `<strong>Side Menu</strong>In the side menu you'll find the main options: create a new scene, load a scene, import references and export scenes as video or an image sequence.`,
+        'features.label': `Features`,
+        'features.title': `Everything you need<br>to animate with precision.`,
+        'features.kbd.name': `Remote control via keyboard`,
+        'features.kbd.desc': `Bluetooth or USB (with OTG adapter). The numeric keypad comes pre-mapped: capture, navigation, FPS, onion skin, focus, zoom, etc. — all without touching the phone.`,
+        'features.cam.name': `Professional camera`,
+        'features.cam.desc': `Automatic photo mode (with EV adjustment) and Manual mode (where you can control WB, shutter speed and ISO). Focus is operated independently, and can also be controlled from the external keyboard. Settings saved per scene.`,
+        'features.timeline.name': `Editing timeline`,
+        'features.timeline.desc': `Numbered thumbnails, section selection, paste normal or reversed, repeat a frame with a yellow marker, undo edits.`,
+        'features.onion.name': `Onion Skin & Flip`,
+        'features.onion.desc': `Onion skin with opacity control and up to 5 overlaid frames. Adjustable intermittent flip at 1s, ½s or ¼s.`,
+        'features.avref.name': `Audio and video references`,
+        'features.avref.desc': `Advanced timeline with reference audio and video import. Dedicated editing modes (green = audio, blue = video).`,
+        'features.timelapse.name': `Time-lapse`,
+        'features.timelapse.desc': `Adjustable interval with a minimum of 2s between captures, with an option to automatically turn off the screen after 1 minute of activity (Settings menu) — save battery on long captures.`,
+        'features.grid.name': `Configurable grid`,
+        'features.grid.desc': `Rule of thirds, title safe or center square. Can be toggled by button or shortcut key. Ideal for precise composition of every frame.`,
+        'features.export.name': `Export as MP4 or JPG`,
+        'features.export.desc': `Export scenes as .mp4 video or as a .jpg image sequence packed into a .zip — ready for Premiere, After Effects or DaVinci.`,
+        'stats.res': `Resolutions: HD / FHD* / 4K*`,
+        'stats.lang': `Languages: PT / ES / EN`,
+        'stats.notouch': `No touching the camera`,
+        'stats.footnote': `* FHD and 4K resolutions available only in the PRO version, via in-app purchase, under Settings/Version and Upgrade`,
+        'kbd.label': `Remote control`,
+        'kbd.title': `The numeric keypad as a complete controller.`,
+        'kbd.intro': `Via Bluetooth or USB with an OTG adapter, the numeric keypad comes pre-mapped. Two modes: <strong style="color:#bbb">Animation</strong> and <strong style="color:#bbb">Photo</strong>. The <kbd style="font-family:'DM Mono',monospace;background:#1a1a1a;border:1px solid #333;padding:.1rem .45rem;border-radius:3px;font-size:.85rem;color:var(--yellow)">/</kbd> key switches between them. Capture, navigate, adjust the camera and edit the timeline — without touching the device.`,
+        'kbd.layoutLabel': `Numeric keypad layout`,
+        'kbd.hint': `Hover over each key to see its function`,
+        'kbd.animBtn': `Animation`,
+        'kbd.fotoBtn': `Photo`,
+        'kbd.key.numlock.title': `Num Lock`,
+        'kbdref.label': `Full shortcut reference`,
+        'kbdref.thKey': `Key`,
+        'kbdref.thAnim': `Animation Mode`,
+        'kbdref.thAnimTitle': `Click to view Animation mode`,
+        'kbdref.thFoto': `Photo Mode`,
+        'kbdref.thFotoTitle': `Click to view Photo mode`,
+        'kbdref.row.capture.anim': `Capture frame`, 'kbdref.row.capture.foto': `Capture frame`,
+        'kbdref.row.playPause.anim': `Play / Pause`, 'kbdref.row.playPause.foto': `Play / Pause`,
+        'kbdref.row.frameBack.anim': `Go back one frame`, 'kbdref.row.frameBack.foto': `Go back one frame`,
+        'kbdref.row.frameFwd.anim': `Go forward one frame`, 'kbdref.row.frameFwd.foto': `Go forward one frame`,
+        'kbdref.row.hideButtons.anim': `Show/hide buttons (hold 1s: opens Hide Options; + and − select)`, 'kbdref.row.hideButtons.foto': `Show/hide buttons (hold 1s: opens Hide Options; + and − select)`,
+        'kbdref.row.live.anim': `Jump to live camera`, 'kbdref.row.live.foto': `WB — White balance (+ and − select)`,
+        'kbdref.row.flip.anim': `Flip (+ and − select speed: 1s, ½s, ¼s)`, 'kbdref.row.flip.foto': `ISO (+ and − select)`,
+        'kbdref.row.onion.anim': `Onion Skin (+ and − adjust opacity; hold 1s: Onion Skin Options)`, 'kbdref.row.onion.foto': `Shutter speed (+ and − select)`,
+        'kbdref.row.playOptions.anim': `Play options: loop, section, loop+section (6 confirms; hold 1s: opens menu)`, 'kbdref.row.playOptions.foto': `EV — Exposure compensation (+ and − select)`,
+        'kbdref.row.editUi.anim': `Edit interface (opens timeline)`, 'kbdref.row.editUi.foto': `Manual / Automatic mode`,
+        'kbdref.row.timelapse.anim': `Time-lapse (+ and − adjust interval; hold 1s: option to turn off screen)`, 'kbdref.row.timelapse.foto': `Zoom (+ and − zoom in/out)`,
+        'kbdref.row.grid.anim': `Grid (+ and − change shape)`, 'kbdref.row.grid.foto': `Focus (+ and − select; hold 1s: lock/unlock)`,
+        'kbdref.row.fpsUp.anim': `Increase FPS`, 'kbdref.row.fpsUp.foto': `Increase active parameter`,
+        'kbdref.row.fpsDown.anim': `Decrease FPS`, 'kbdref.row.fpsDown.foto': `Decrease active parameter`,
+        'kbdref.row.deleteFrame.anim': `Delete frame`, 'kbdref.row.deleteFrame.foto': `Delete frame`,
+        'kbdref.row.undo.anim': `Undo`, 'kbdref.row.undo.foto': `Undo`,
+        'kbdref.row.modeToggle.anim': `Switch to Photo mode`, 'kbdref.row.modeToggle.foto': `Switch to Animation mode`,
+        'workflow.label': `Workflow`,
+        'workflow.title': `From setup to export,<br>with total control.`,
+        'workflow.step1.tag': `Setup`, 'workflow.step1.h3': `Create your scene`,
+        'workflow.step1.p': `Set a name and resolution (HD, Full HD or 4K). The app automatically creates proxies for FHD and 4K, ensuring smooth playback even at high fps. Camera settings are saved per scene.`,
+        'workflow.step2.tag': `Capture`, 'workflow.step2.h3': `Animate frame by frame`,
+        'workflow.step2.p': `Capture from the screen or an external keyboard. Use Onion Skin and Flip to guide the movement. The LIVE indicator shows when you're looking at the camera feed, not a captured frame.`,
+        'workflow.step3.tag': `Editing`, 'workflow.step3.h3': `Refine on the timeline`,
+        'workflow.step3.p': `Select sections, copy or paste (normal or reversed). Repeat frames with a visual marker. The Edit Sheet protects your originals — no image file is ever changed or deleted.`,
+        'workflow.step4.tag': `Reference`, 'workflow.step4.h3': `Import audio and video`,
+        'workflow.step4.p': `In the Advanced Timeline, import audio and video references. Sync audio with lip sync and action frame-by-frame before exporting.`,
+        'workflow.step5.tag': `Export`, 'workflow.step5.h3': `Export and deliver`,
+        'workflow.step5.p': `MP4 for immediate viewing. A .jpg sequence in .zip for editing in Premiere, After Effects or DaVinci.`,
+        'export.label': `Export`,
+        'export.title': `Ready for<br>any pipeline.`,
+        'export.p': `Export straight from the side menu without loading the scene. Two output options, compatible with the main editing and compositing software.`,
+        'export.card1.label': `MP4 Video`, 'export.card1.desc': `H.264 with real-time progress, accessible from the file manager.`,
+        'export.card2.label': `JPG Image Sequence`, 'export.card2.desc': `.jpg frames numbered in sequential order, packed into a .zip file. Drag straight into Premiere, After Effects or DaVinci.`,
+        'export.card3.label': `Backup and portability`, 'export.card3.desc': `Export the entire scene folder for backup, or to keep animating on another device.`,
+        'about.label': `About the creator`,
+        'about.quote': `"A professional animator with 28 years of experience. I built the app I always wanted to have for animating and teaching animation."`,
+        'about.p1': `Stop Motion MT was developed by <strong style="color:#bbb">Pedro Iuá</strong>, a Brazilian animator. Every feature comes from a real need in professional animation — tested on real hardware, continuously refined in a real production workflow.`,
+        'about.p2': `The goal is to democratize stop motion: from a student's first animation to professional-level projects, using the same tools.`,
+        'about.meta': `Rio de Janeiro · Brazil · Pedro Iuá · 2026`,
+        'cta.label': `Available now`,
+        'cta.badge1': `✦ Full free version with a maximum resolution of 1280 x 720 px`,
+        'cta.badge2': `✦ PRO version, via in-app purchase, to unlock Full HD and 4K resolutions`,
+        'cta.title': `Start animating<br><em style="color:var(--yellow)">today.</em>`,
+        'cta.p': `Download Stop Motion MT and discover what it's like to shoot stop motion with real camera control, external keyboard connectivity and a professional timeline.`,
+        'footer.copy': `Developed by Pedro Iuá · Rio de Janeiro`,
+      },
+      es: {
+        docTitle: `Stop Motion MT — Magia y Trucos`,
+        'nav.tagline': `Magia y Trucos`,
+        'nav.dlAndroidFull': `Descargar gratis para Android`,
+        'nav.dlAndroidShort': `Android`,
+        'nav.dlIosFull': `Descargar gratis para iOS`,
+        'nav.dlIosShort': `iOS`,
+        'hero.title': `Stop Motion<br>con control<br><em>profesional.</em>`,
+        'hero.sub': `StopMotion MT — Magia y Trucos. Captura frame a frame con control total de la cámara, edita en la línea de tiempo y exporta tus escenas como vídeo MP4 o secuencia de imágenes JPG. Hecho por un animador, para animadores.`,
+        'hero.btnPlay': `▶ Descargar en Play Store`,
+        'hero.btnApple': `▶ Descargar en App Store`,
+        'hero.btnFeatures': `Ver funciones →`,
+        'intro.label': `Qué es la app`,
+        'intro.quote': `"La app que siempre quise tener para animar."`,
+        'intro.p1': `Stop Motion MT (de <strong style="color:var(--yellow)">Magia y Trucos</strong>) está dedicado a la animación de objetos, creando la ilusión de movimiento a partir de la captura de fotografías en secuencia. La app ofrece una interfaz simple e intuitiva, con todos los recursos para una animación de alto nivel — del principiante al profesional.`,
+        'intro.p2': `El principal diferencial: <strong style="color:#bbb">control remoto total por teclado externo</strong>. Se puede conectar por Bluetooth o USB, usando un adaptador OTG (USB a USB-C). Captura, retrocede y avanza frames, reproduce, ajusta parámetros de fotografía como velocidad, ISO, WB, enfoque, zoom y más — todo sin tocar la cámara.`,
+        'shots.label': `Interfaz real`,
+        'shots.title': `La app en acción.`,
+        'shots.onion.alt': `Controles de animación — Onion Skin, flip, time-lapse`,
+        'shots.onion.cap': `<strong>Controles de Animación</strong>Accede a todos los recursos de animación en una interfaz única e intuitiva: Onion Skin, alternancia entre En Vivo y el último frame (flip), avanzar y retroceder cuadro a cuadro, time-lapse y mucho más.`,
+        'shots.camera.alt': `Controles de cámara — enfoque, ISO, velocidad, WB en modo manual`,
+        'shots.camera.cap': `<strong>Controles de Cámara</strong>En el lateral derecho, el botón cuadrado alterna entre las funciones de Fotografía y Animación. En el modo Fotografía, tienes acceso a los botones de enfoque (Bloquear Enfoque, Enfoque Táctil, Enfoque Automático) y a los ajustes de fotografía. Alterna entre los modos Automático y Manual para encontrar la luz ideal. Controla toda la fotografía con el modo Manual, ajustando el Balance de Blancos, la velocidad y el ISO — todo accesible siempre en el mismo panel, y también de forma remota usando un teclado externo.`,
+        'shots.hide.alt': `Ocultar botones — interfaz limpia con cuadrícula`,
+        'shots.hide.cap': `<strong>Ocultar Botones</strong>Interfaz limpia para una visualización más clara de todos los detalles de la escena, usando la función Ocultar Botones (el botón de "ojo" en el lateral derecho). Opciones de cuadrícula para guiar la composición y ayudar con el encuadre.`,
+        'shots.timeline.alt': `Línea de tiempo con miniaturas numeradas y opciones de edición`,
+        'shots.timeline.cap': `<strong>Línea de Tiempo con Miniaturas</strong>Miniaturas numeradas, con opciones para seleccionar un tramo, copiar y pegar tramos o frames individuales — edición completa en la línea de tiempo, todo accesible desde el botón de "película" en la esquina inferior del lateral izquierdo. Manteniendo presionada la miniatura de un frame específico en la línea de tiempo, puedes aumentar su duración eligiendo el número de frames repetidos.`,
+        'shots.avref.alt': `Audios y vídeos de referencia — línea de tiempo avanzada con pistas`,
+        'shots.avref.cap': `<strong>Audios y Vídeos de Referencia</strong>Carga vídeos y audios de referencia, edítalos en la app y exporta escenas con vídeos superpuestos y/o sonorizadas. Es posible escuchar el audio cuadro a cuadro, lo que permite animar en sincronía con bandas sonoras y diálogos, para hacer sincronía labial (lip sync).`,
+        'shots.menu.alt': `Menú lateral — nueva escena, cargar, importar, exportar`,
+        'shots.menu.cap': `<strong>Menú Lateral</strong>En el menú lateral encuentras las principales opciones: crear nueva escena, cargar escena, importar referencias y exportar escenas en formato de vídeo o secuencia de imágenes.`,
+        'features.label': `Funcionalidades`,
+        'features.title': `Todo lo que necesitas<br>para animar con precisión.`,
+        'features.kbd.name': `Control remoto por teclado`,
+        'features.kbd.desc': `Bluetooth o USB (con adaptador OTG). El teclado numérico ya viene mapeado: captura, navegación, FPS, onion skin, enfoque, zoom, etc. — todo sin tocar el celular.`,
+        'features.cam.name': `Cámara profesional`,
+        'features.cam.desc': `Modos de fotografía Automático (con ajuste de EV) y Manual (donde se puede controlar WB, velocidad de obturador e ISO). El enfoque se opera de forma independiente, y también se puede controlar desde el teclado externo. Ajustes guardados por escena.`,
+        'features.timeline.name': `Línea de tiempo para edición`,
+        'features.timeline.desc': `Miniaturas numeradas, selección de tramo, pegar normal o invertido, repetir frame con marca en amarillo, deshacer ediciones.`,
+        'features.onion.name': `Onion Skin y Flip`,
+        'features.onion.desc': `Onion skin con control de opacidad y hasta 5 frames superpuestos. Flip intermitente ajustable a 1 s, ½ s o ¼ s.`,
+        'features.avref.name': `Referencias de audio y vídeo`,
+        'features.avref.desc': `Línea de tiempo avanzada con importación de audio y vídeo de referencia. Modos de edición dedicados (verde = audio, azul = vídeo).`,
+        'features.timelapse.name': `Time-lapse`,
+        'features.timelapse.desc': `Intervalo ajustable con un mínimo de 2 s entre capturas, con opción de apagado automático de pantalla tras 1 minuto de actividad (menú de Ajustes) — ahorra batería en capturas largas.`,
+        'features.grid.name': `Cuadrícula configurable`,
+        'features.grid.desc': `Tercios, title safe o cuadrado central. Se activa con botón o tecla de atajo. Ideal para una composición precisa de cada frame.`,
+        'features.export.name': `Exportar en MP4 o JPG`,
+        'features.export.desc': `Exporta las escenas como vídeo .mp4 o como secuencia de imágenes .jpg comprimidas en .zip — listas para Premiere, After Effects o DaVinci.`,
+        'stats.res': `Resoluciones: HD / FHD* / 4K*`,
+        'stats.lang': `Idiomas: PT / ES / EN`,
+        'stats.notouch': `Sin tocar la cámara`,
+        'stats.footnote': `* las resoluciones FHD y 4K están disponibles solo en la versión PRO, mediante compra dentro de la app, en la opción Ajustes/Versión y Mejora`,
+        'kbd.label': `Control remoto`,
+        'kbd.title': `El teclado numérico como controlador completo.`,
+        'kbd.intro': `Por Bluetooth o USB con adaptador OTG, el teclado numérico ya viene mapeado. Dos modos: <strong style="color:#bbb">Animación</strong> y <strong style="color:#bbb">Fotografía</strong>. La tecla <kbd style="font-family:'DM Mono',monospace;background:#1a1a1a;border:1px solid #333;padding:.1rem .45rem;border-radius:3px;font-size:.85rem;color:var(--yellow)">/</kbd> alterna entre ellos. Captura, navega, ajusta la cámara y edita la línea de tiempo — sin tocar el dispositivo.`,
+        'kbd.layoutLabel': `Diseño del teclado numérico`,
+        'kbd.hint': `Pasa el mouse sobre cada tecla para ver su función`,
+        'kbd.animBtn': `Animación`,
+        'kbd.fotoBtn': `Fotografía`,
+        'kbd.key.numlock.title': `Bloq Num`,
+        'kbdref.label': `Referencia completa de atajos`,
+        'kbdref.thKey': `Tecla`,
+        'kbdref.thAnim': `Modo Animación`,
+        'kbdref.thAnimTitle': `Haz clic para ver el modo Animación`,
+        'kbdref.thFoto': `Modo Fotografía`,
+        'kbdref.thFotoTitle': `Haz clic para ver el modo Fotografía`,
+        'kbdref.row.capture.anim': `Capturar frame`, 'kbdref.row.capture.foto': `Capturar frame`,
+        'kbdref.row.playPause.anim': `Play / Pausa`, 'kbdref.row.playPause.foto': `Play / Pausa`,
+        'kbdref.row.frameBack.anim': `Retroceder un frame`, 'kbdref.row.frameBack.foto': `Retroceder un frame`,
+        'kbdref.row.frameFwd.anim': `Avanzar un frame`, 'kbdref.row.frameFwd.foto': `Avanzar un frame`,
+        'kbdref.row.hideButtons.anim': `Ocultar/mostrar botones (mantener 1 s: abre Opciones de Ocultar; + y − seleccionan)`, 'kbdref.row.hideButtons.foto': `Ocultar/mostrar botones (mantener 1 s: abre Opciones de Ocultar; + y − seleccionan)`,
+        'kbdref.row.live.anim': `Saltar a la cámara en vivo`, 'kbdref.row.live.foto': `WB — Balance de blancos (+ y − seleccionan)`,
+        'kbdref.row.flip.anim': `Flip (+ y − seleccionan velocidad: 1 s, ½ s, ¼ s)`, 'kbdref.row.flip.foto': `ISO (+ y − seleccionan)`,
+        'kbdref.row.onion.anim': `Onion Skin (+ y − ajustan la opacidad; mantener 1 s: Opciones de Onion Skin)`, 'kbdref.row.onion.foto': `Velocidad de obturador (+ y − seleccionan)`,
+        'kbdref.row.playOptions.anim': `Opciones de reproducción: loop, tramo, loop+tramo (6 confirma; mantener 1 s: abre el menú)`, 'kbdref.row.playOptions.foto': `EV — Compensación de exposición (+ y − seleccionan)`,
+        'kbdref.row.editUi.anim': `Interfaz de edición (abre la línea de tiempo)`, 'kbdref.row.editUi.foto': `Modo Manual / Automático`,
+        'kbdref.row.timelapse.anim': `Time-lapse (+ y − ajustan el intervalo; mantener 1 s: opción de apagar pantalla)`, 'kbdref.row.timelapse.foto': `Zoom (+ y − acercan y alejan)`,
+        'kbdref.row.grid.anim': `Cuadrícula (+ y − cambian el formato)`, 'kbdref.row.grid.foto': `Enfoque (+ y − seleccionan; mantener 1 s: bloquear/desbloquear)`,
+        'kbdref.row.fpsUp.anim': `Aumentar FPS`, 'kbdref.row.fpsUp.foto': `Aumentar parámetro activo`,
+        'kbdref.row.fpsDown.anim': `Disminuir FPS`, 'kbdref.row.fpsDown.foto': `Disminuir parámetro activo`,
+        'kbdref.row.deleteFrame.anim': `Borrar frame`, 'kbdref.row.deleteFrame.foto': `Borrar frame`,
+        'kbdref.row.undo.anim': `Deshacer`, 'kbdref.row.undo.foto': `Deshacer`,
+        'kbdref.row.modeToggle.anim': `Cambiar a modo Fotografía`, 'kbdref.row.modeToggle.foto': `Cambiar a modo Animación`,
+        'workflow.label': `Flujo de trabajo`,
+        'workflow.title': `Desde la configuración hasta la exportación,<br>con control total.`,
+        'workflow.step1.tag': `Configuración`, 'workflow.step1.h3': `Crea tu escena`,
+        'workflow.step1.p': `Define nombre y resolución (HD, Full HD o 4K). La app crea proxies automáticos para FHD y 4K, garantizando una reproducción fluida incluso a fps alta. Los ajustes de cámara se guardan por escena.`,
+        'workflow.step2.tag': `Captura`, 'workflow.step2.h3': `Anima cuadro a cuadro`,
+        'workflow.step2.p': `Captura desde la pantalla o con teclado externo. Usa Onion Skin y Flip para guiar el movimiento. El indicador EN VIVO muestra cuándo estás viendo la imagen de la cámara, no un frame capturado.`,
+        'workflow.step3.tag': `Edición`, 'workflow.step3.h3': `Perfecciona en la línea de tiempo`,
+        'workflow.step3.p': `Selecciona tramos, copia o pega (normal o invertido). Repite frames con marca visual. La Ficha de Ediciones protege los originales — ningún archivo de imagen se altera o se borra.`,
+        'workflow.step4.tag': `Referencia`, 'workflow.step4.h3': `Importa audio y vídeo`,
+        'workflow.step4.p': `En la Línea de Tiempo Avanzada, importa referencias de audio y vídeo. Sincroniza el audio con lip sync y la acción con precisión cuadro a cuadro antes de exportar.`,
+        'workflow.step5.tag': `Exportar`, 'workflow.step5.h3': `Exporta y entrega`,
+        'workflow.step5.p': `MP4 para visualización inmediata. Secuencia .jpg en .zip para editar en Premiere, After Effects o DaVinci.`,
+        'export.label': `Exportar`,
+        'export.title': `Listo para<br>cualquier pipeline.`,
+        'export.p': `Exporta directamente desde el menú lateral sin necesidad de cargar la escena. Dos opciones de salida, compatibles con los principales programas de edición y composición.`,
+        'export.card1.label': `Vídeo MP4`, 'export.card1.desc': `H.264 con progreso en tiempo real, accesible desde el gestor de archivos.`,
+        'export.card2.label': `Secuencia de imágenes .JPG`, 'export.card2.desc': `Frames .jpg numerados en orden secuencial comprimidos en un archivo .zip. Arrastra directamente a Premiere, After FX o DaVinci.`,
+        'export.card3.label': `Copia de seguridad y portabilidad`, 'export.card3.desc': `Exporta la carpeta completa de la escena para copia de seguridad o para seguir animando en otro dispositivo.`,
+        'about.label': `Sobre el creador`,
+        'about.quote': `"Animador profesional con 28 años de experiencia. Hice la app que siempre quise tener para animar y enseñar animación."`,
+        'about.p1': `Stop Motion MT fue desarrollado por <strong style="color:#bbb">Pedro Iuá</strong>, animador brasileño. Cada función nace de una necesidad real de la animación profesional — probada en hardware real, perfeccionada continuamente en un flujo de trabajo real.`,
+        'about.p2': `El objetivo es democratizar el stop motion: desde la primera animación de un estudiante hasta proyectos de nivel profesional, con las mismas herramientas.`,
+        'about.meta': `Río de Janeiro · Brasil · Pedro Iuá · 2026`,
+        'cta.label': `Disponible ahora`,
+        'cta.badge1': `✦ Versión gratuita completa con resolución máxima de 1280 x 720 px`,
+        'cta.badge2': `✦ Versión PRO, con compra en la app, para desbloquear resoluciones Full HD y 4K`,
+        'cta.title': `Empieza a animar<br><em style="color:var(--yellow)">hoy.</em>`,
+        'cta.p': `Descarga Stop Motion MT y descubre lo que es capturar stop motion con control real de cámara, conexión con teclado externo y línea de tiempo profesional.`,
+        'footer.copy': `Desarrollado por Pedro Iuá · Río de Janeiro`,
+      },
+    };
+
+    const numpadT = {
+      modeToggle: { en: { anim: `Switch to Photo mode`, foto: `Switch to Animation mode` }, es: { anim: `Cambiar a modo Fotografía`, foto: `Cambiar a modo Animación` } },
+      undo:        { en: { anim: `Undo`, foto: `Undo` }, es: { anim: `Deshacer`, foto: `Deshacer` } },
+      deleteFrame: { en: { anim: `Delete frame`, foto: `Delete frame` }, es: { anim: `Borrar frame`, foto: `Borrar frame` } },
+      editUi:      { en: { anim: `Edit interface`, foto: `Manual / Automatic mode` }, es: { anim: `Interfaz de edición`, foto: `Modo Manual / Automático` } },
+      timelapse:   { en: { anim: `Time-lapse`, foto: `Zoom` }, es: { anim: `Time-lapse`, foto: `Zoom` } },
+      grid:        { en: { anim: `Grid`, foto: `Focus` }, es: { anim: `Cuadrícula`, foto: `Enfoque` } },
+      fpsDown:     { en: { anim: `Decrease FPS`, foto: `Decrease active parameter` }, es: { anim: `Disminuir FPS`, foto: `Disminuir parámetro activo` } },
+      flip:        { en: { anim: `Flip`, foto: `ISO` }, es: { anim: `Flip`, foto: `ISO` } },
+      onion:       { en: { anim: `Onion Skin`, foto: `Shutter speed` }, es: { anim: `Onion Skin`, foto: `Velocidad de obturador` } },
+      playOptions: { en: { anim: `Play options`, foto: `EV — Exposure compensation` }, es: { anim: `Opciones de reproducción`, foto: `EV — Compensación de exposición` } },
+      fpsUp:       { en: { anim: `Increase FPS`, foto: `Increase active parameter` }, es: { anim: `Aumentar FPS`, foto: `Aumentar parámetro activo` } },
+      frameBack:   { en: { anim: `Go back one frame`, foto: `Go back one frame` }, es: { anim: `Retroceder un frame`, foto: `Retroceder un frame` } },
+      frameFwd:    { en: { anim: `Go forward one frame`, foto: `Go forward one frame` }, es: { anim: `Avanzar un frame`, foto: `Avanzar un frame` } },
+      live:        { en: { anim: `Jump to live camera`, foto: `WB — White balance` }, es: { anim: `Saltar a cámara en vivo`, foto: `WB — Balance de blancos` } },
+      capture:     { en: { anim: `Capture frame`, foto: `Capture frame` }, es: { anim: `Capturar frame`, foto: `Capturar frame` } },
+      playPause:   { en: { anim: `Play / Pause`, foto: `Play / Pause` }, es: { anim: `Play / Pausa`, foto: `Play / Pausa` } },
+      hideButtons: { en: { anim: `Show/hide buttons`, foto: `Show/hide buttons` }, es: { anim: `Ocultar/mostrar botones`, foto: `Ocultar/mostrar botones` } },
+    };
+
+    function setLanguage(lang) {
+      const dict = T[lang];
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        el.innerHTML = (dict && dict[key]) ?? originalText[key] ?? el.innerHTML;
+      });
+      document.querySelectorAll('[data-i18n-alt]').forEach(el => {
+        const key = el.getAttribute('data-i18n-alt');
+        el.setAttribute('alt', (dict && dict[key]) ?? originalAlt[key] ?? el.getAttribute('alt'));
+      });
+      document.querySelectorAll('[data-i18n-title]').forEach(el => {
+        const key = el.getAttribute('data-i18n-title');
+        el.setAttribute('title', (dict && dict[key]) ?? originalTitleAttr[key] ?? el.getAttribute('title'));
+      });
+      document.querySelectorAll('.nk[data-i18n-key]').forEach(el => {
+        const id = el.dataset.i18nKey;
+        const entry = (lang !== 'pt' && numpadT[id] && numpadT[id][lang]) || originalNumpad[id];
+        el.dataset.anim = entry.anim;
+        el.dataset.foto = entry.foto;
+      });
+      refreshNumpadTitles();
+
+      document.title = (dict && dict.docTitle) || originalDocTitle;
+      document.documentElement.lang = lang === 'pt' ? 'pt-BR' : lang;
+
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+      });
+
+      try { localStorage.setItem('smmt_lang', lang); } catch (e) {}
+    }
+
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
+    });
+
+    let initialLang = 'pt';
+    try {
+      const saved = localStorage.getItem('smmt_lang');
+      if (saved === 'pt' || saved === 'en' || saved === 'es') {
+        initialLang = saved;
+      } else {
+        const nav = (navigator.language || '').toLowerCase();
+        if (nav.startsWith('en')) initialLang = 'en';
+        else if (nav.startsWith('es')) initialLang = 'es';
+      }
+    } catch (e) {}
+
+    setLanguage(initialLang);
+  })();
 
 </script>
 </body>
